@@ -15,14 +15,16 @@ class Neuron {
 	int spikeNumber;
 	double timeSpike;
 	
-	void update ( int increment) ;
-	void storePotential (ofstream PotentialStorage) const; 
+	bool isRefractory(double) const; //dit si le neurone est en periode refractaire a un temps donné
+	void storePotential () const; 
 	
 	public :
-	Neuron(double, int, double);
+	Neuron(double, int, double); // initialisation
 	double getPotential() const;
 	int getSpikeNumber() const;
 	double getTimeSpike() const;
+	
+	void update ( int increment) ; //update en fonstion du temps depuis le debut de l'experience ?????? 
 	};
 	
 
