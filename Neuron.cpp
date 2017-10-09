@@ -15,20 +15,23 @@ int Neuron::getSpikeNumber() const {
 double Neuron::getTimeSpike() const {
 	return timeSpike;}
 
-Neuron::Neuron(double pot=Vr, int spike=0, double time=0.0 ) : potential(pot), spikeNumber(spike), timeSpike(time) {} 
+Neuron::Neuron(double pot=Vr, int spike=0, double timeofSpike=0.0, double timeofSimulation= SimulationStart ) : potential(pot), spikeNumber(spike), 
+timeSpike(timeofSpike), local_clock(timeofSimulation) {} 
 
-void Neuron::update ( int increment) {
-	double temps(SimulationStart+increment*h); //variable locale pour optimiser les calculs
-	if (!isRefractory(temps)) { // si le neurones est en periode refractaire, il est insensible aux stimuli
-		double cst(exp(-increment*h/tau)); // variable locale pour optimiser 
+void Neuron::update ( ) {
+	if (!isRefractory(local_clock)) { // si le neurones est en periode refractaire, il est insensible aux stimuli
+		double cst(exp(-h/tau)); // variable locale pour optimiser 
 		potential = cst*potential + I*R*(1-cst); // m-a-j de la valeur du potentiel
+		cout << "potentiel " << potential << threshold<<endl;
 		if (potential >= threshold) { 
+			cout << "test" << potential << endl;
 			++spikeNumber; 
-			timeSpike = temps;
+			timeSpike = local_clock;
 			storePotential();
 			potential = Vr; //pot revient a sa valeur seuil
+			++local_clock;
 			}
-		}
+		} else { cout << "Neurone refractaire " << endl;}
 	}
 
 bool Neuron::isRefractory( double atTime) const { // si le temps depuis le dernier spike est < au temps de pause refractaire
