@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Constants.hpp
+iostream
+-
+
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Neuron.cpp
+Neuron.hpp
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Neuron.hpp
+iostream
+-
+
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Neuron.hpp
+iostream
+-
+fstream
+-
+cmath
+-
+Constants.hpp
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Constants.hpp
+
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/main.cpp
+iostream
+-
+cmath
+-
+Neuron.hpp
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Neuron.hpp
+Constants.hpp
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Constants.hpp
+

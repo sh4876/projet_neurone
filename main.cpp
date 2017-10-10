@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "Neuron.cpp"
+#include "Neuron.hpp"
 #include "Constants.hpp"
 
 
@@ -9,7 +9,7 @@ using namespace std;
 
 
 void CurrentRegulation (int current);
-void UpdateSimulation (double globalClock, int increment, Neuron neurone); /*temps simulation egal le 
+void UpdateSimulation (double& globalClock, int increment, Neuron& neurone); /*temps simulation egal le 
 temps actuel de l experience, update sim devrait etre apellée tous les
 pas de temps et non apres increment*pas de temps */
 
@@ -37,7 +37,7 @@ void CurrentRegulation (int current, int tempsSimulation ) {
 	current = 0;
 	}
 	
-void UpdateSimulation (double globalClock, int increment, Neuron neurone) {
+void UpdateSimulation (double& globalClock, int increment, Neuron& neurone) {
 	
 	double finUpdate(globalClock+increment*h);
 		
@@ -48,4 +48,4 @@ void UpdateSimulation (double globalClock, int increment, Neuron neurone) {
 		cout << "global_clock" << globalClock << endl;
 		}
 	
-	}
+}

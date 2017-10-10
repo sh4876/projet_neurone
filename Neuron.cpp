@@ -1,10 +1,11 @@
 #include "Neuron.hpp"
-#include "Constants.hpp"
 #include <iostream>
 
 
-void Neuron::storePotential () const {
-	PotentialStorageFile<< getTimeSpike() << " " << getPotential() << endl;}
+
+
+void Neuron::storePotential (ofstream & out) const {
+	out << getTimeSpike() << " " << getPotential() << endl;}
 	
 double Neuron::getPotential() const {
 	return potential;}
@@ -15,8 +16,11 @@ int Neuron::getSpikeNumber() const {
 double Neuron::getTimeSpike() const {
 	return timeSpike;}
 
-Neuron::Neuron(double pot=Vr, int spike=0, double timeofSpike=0.0, double timeofSimulation= SimulationStart ) : potential(pot), spikeNumber(spike), 
-timeSpike(timeofSpike), local_clock(timeofSimulation) {} 
+Neuron::Neuron(double pot, int spike, double timeofSpike, double timeofSimulation ) : potential(pot), spikeNumber(spike), 
+timeSpike(timeofSpike), local_clock(timeofSimulation) 
+{
+	 // ios::out ׀ 
+} 
 
 void Neuron::update ( ) {
 	if (!isRefractory(local_clock)) { // si le neurones est en periode refractaire, il est insensible aux stimuli
@@ -27,13 +31,15 @@ void Neuron::update ( ) {
 			cout << "test" << potential << endl;
 			++spikeNumber; 
 			timeSpike = local_clock;
-			storePotential();
+			ofstream PotentialStorageFile("potentials.txt");
+			storePotential(PotentialStorageFile);
 			potential = Vr; //pot revient a sa valeur seuil
-			++local_clock;
 			}
-		} else { cout << "Neurone refractaire " << endl;}
+		} else { 
+			cout << "Neurone refractaire " << endl;}
+			++local_clock;
 	}
 
-bool Neuron::isRefractory( double atTime) const { // si le temps depuis le dernier spike est < au temps de pause refractaire
+bool Neuron::isRefractory(const double& atTime) const { // si le temps depuis le dernier spike est < au temps de pause refractaire
 	return (getTimeSpike()+tau_rp <= atTime);
 	}

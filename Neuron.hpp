@@ -3,9 +3,12 @@
 
 #include <iostream>
 #include <fstream>
+#include <cmath>
+#include "Constants.hpp"
+
 using namespace std;
 //{}
-ofstream PotentialStorageFile ("potentials.txt", ios::app); // ios::out ׀ 
+
 
 
 class Neuron {
@@ -16,17 +19,18 @@ class Neuron {
 	double timeSpike;
 	double local_clock;
 	
-	bool isRefractory(double) const; //dit si le neurone est en periode refractaire a un temps donné
-	void storePotential () const; 
+	bool isRefractory(const double&) const; //dit si le neurone est en periode refractaire a un temps donné
+
+	void storePotential (ofstream& out ) const; 
 	
 	public :
-	Neuron(double, int, double, double); // initialisation
+	Neuron(double pot=Vr, int spike=0, double timeofSpike=0.0, double timeofSimulation= SimulationStart); // initialisation
 	double getPotential() const;
 	int getSpikeNumber() const;
 	double getTimeSpike() const;
 	
 	void update () ; 
-	};
+};
 	
 
 #endif
