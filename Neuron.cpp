@@ -2,44 +2,74 @@
 #include <iostream>
 
 
-
-
 void Neuron::storePotential (ofstream & out) const {
-	out << getTimeSpike() << " " << getPotential() << endl;}
+	out << getTimeSpike()*h << " " << getPotential() << endl;}
 	
 double Neuron::getPotential() const {
-	return potential;}
+	return potential_;}
 
 int Neuron::getSpikeNumber() const {
-	return spikeNumber;}
+	return spikeNumber_;}
 	
-double Neuron::getTimeSpike() const {
-	return timeSpike;}
+int Neuron::getTimeSpike() const {
+	return timeSpike_;}
 
-Neuron::Neuron(double pot, int spike, double timeofSpike, double timeofSimulation ) : potential(pot), spikeNumber(spike), 
-timeSpike(timeofSpike), local_clock(timeofSimulation) 
-{
-	 // ios::out ׀ 
+Neuron::Neuron(double Iexterne, int Delay, double potential, int spikeNumber, int timeSpike, int local_clock ) : I_ext_(Iexterne), 
+potential_(potential), spikeNumber_(spikeNumber)
+
+{	///admit initialisation is in ms
+	timeSpike_=timeSpike/h;
+	Delay_=Delay/h;
+	local_clock_=local_clock/h;
+	
+	for (size_t i(0); i < Buffersize; ++i) {buffer_.push_back(0.0);}
+	
+	
 } 
+Neuron::~Neuron(){}
 
-void Neuron::update ( ) {
-	if (!isRefractory(local_clock)) { // si le neurones est en periode refractaire, il est insensible aux stimuli
-		double cst(exp(-h/tau)); // variable locale pour optimiser 
-		potential = cst*potential + I*R*(1-cst); // m-a-j de la valeur du potentiel
-		cout << "potentiel " << potential << threshold<<endl;
-		if (potential >= threshold) { 
-			cout << "test" << potential << endl;
-			++spikeNumber; 
-			timeSpike = local_clock;
+bool Neuron::update ( ) {
+	if (!isRefractory(local_clock_)) { // si le neurone est en periode refractaire, il est insensible aux stimuli
+		
+		potential_ = C1*potential_ + I_ext_*C2 + buffer_[(local_clock_)%Delay_]; // m-a-j de la valeur du potentiel
+			buffer_[(local_clock_)%Delay_] = 0; //vide la case correspondante du buffer 
+			
+		
+		cout << "potentiel " << potential_ << threshold<<endl;
+		if (potential_ >= threshold) { 
+			cout << "test" << potential_ << endl;
+			++spikeNumber_; 
+			cout << "nombre de spike " << getSpikeNumber() << endl; 
+			cout << "heure locale " << local_clock_ << endl; 
+			timeSpike_ = local_clock_;
 			ofstream PotentialStorageFile("potentials.txt");
 			storePotential(PotentialStorageFile);
-			potential = Vr; //pot revient a sa valeur seuil
+			potential_ = Vr; //pot revient a sa valeur seuil
+			return true;
 			}
+		
 		} else { 
 			cout << "Neurone refractaire " << endl;}
-			++local_clock;
+			++local_clock_;
+			return false;
 	}
 
-bool Neuron::isRefractory(const double& atTime) const { // si le temps depuis le dernier spike est < au temps de pause refractaire
-	return (getTimeSpike()+tau_rp <= atTime);
+bool Neuron::isRefractory(const int& time) const { // si le temps depuis le dernier spike est < au temps de pause refractaire
+	
+	cout << "temps du derneir spike" << getTimeSpike() << endl;
+	cout << "  temps auquel le prochian spike peut avoir lieu :  " << getTimeSpike()  + STEP_tau_rp <<  endl; 
+	cout <<"time" << time << endl; 
+	return (getTimeSpike()+STEP_tau_rp > time);
 	}
+
+void Neuron::writeinBuffer(const int& time){	
+	size_t index (0);
+	index = (time + buffer_.size()-1)%buffer_.size();
+	buffer_[index] += J;
+	}
+
+void Neuron::set_Iext(double Iext) {
+	I_ext_ = Iext; 
+	} 
+
+

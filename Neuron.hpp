@@ -4,33 +4,46 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <vector>
 #include "Constants.hpp"
 
 using namespace std;
+
 //{}
 
 
 
+typedef vector<double> Buffer;
+
 class Neuron {
 	
 	private :
-	double potential;
-	int spikeNumber;
-	double timeSpike;
-	double local_clock;
+	 
+	int Delay_;
+	double I_ext_;
+	double potential_;
+	int spikeNumber_;
+	int timeSpike_;
+	int local_clock_;
+	Buffer buffer_;
 	
-	bool isRefractory(const double&) const; //dit si le neurone est en periode refractaire a un temps donné
-
+	bool isRefractory(const int&) const; //dit si le neurone est en periode refractaire a un temps donné
 	void storePotential (ofstream& out ) const; 
 	
 	public :
-	Neuron(double pot=Vr, int spike=0, double timeofSpike=0.0, double timeofSimulation= SimulationStart); // initialisation
+	
+	Neuron(  double I_ext= I , int Delay=STEP_D, double potential=Vr, int spikeNumber=0, int timeSpike=-tau_rp, int local_clock=0); // initialisation$
+	~Neuron();
 	double getPotential() const;
 	int getSpikeNumber() const;
-	double getTimeSpike() const;
+	int getTimeSpike() const;
+	void writeinBuffer(const int& time );
+	void set_Iext(double) ;
 	
-	void update () ; 
+	bool update () ; 
+	
 };
 	
 
+ 
 #endif

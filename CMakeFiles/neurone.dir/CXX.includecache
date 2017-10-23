@@ -9,6 +9,8 @@
 /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Constants.hpp
 iostream
 -
+cmath
+-
 
 /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Neuron.cpp
 Neuron.hpp
@@ -23,6 +25,32 @@ fstream
 -
 cmath
 -
+vector
+-
+Constants.hpp
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Constants.hpp
+
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Simulation.cpp
+Simulation.hpp
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Simulation.hpp
+Neuron.hpp
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Neuron.hpp
+iostream
+-
+cassert
+-
+vector
+-
+fstream
+-
+
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Simulation.hpp
+iostream
+-
+cmath
+-
+vector
+-
 Constants.hpp
 /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Constants.hpp
 
@@ -31,8 +59,12 @@ iostream
 -
 cmath
 -
+vector
+-
 Neuron.hpp
 /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Neuron.hpp
 Constants.hpp
 /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Constants.hpp
+Simulation.hpp
+/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Simulation.hpp
 

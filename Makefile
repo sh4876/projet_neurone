@@ -138,6 +138,30 @@ Neuron.cpp.s:
 	$(MAKE) -f CMakeFiles/neurone.dir/build.make CMakeFiles/neurone.dir/Neuron.cpp.s
 .PHONY : Neuron.cpp.s
 
+Simulation.o: Simulation.cpp.o
+.PHONY : Simulation.o
+
+# target to build an object file
+Simulation.cpp.o:
+	$(MAKE) -f CMakeFiles/neurone.dir/build.make CMakeFiles/neurone.dir/Simulation.cpp.o
+.PHONY : Simulation.cpp.o
+
+Simulation.i: Simulation.cpp.i
+.PHONY : Simulation.i
+
+# target to preprocess a source file
+Simulation.cpp.i:
+	$(MAKE) -f CMakeFiles/neurone.dir/build.make CMakeFiles/neurone.dir/Simulation.cpp.i
+.PHONY : Simulation.cpp.i
+
+Simulation.s: Simulation.cpp.s
+.PHONY : Simulation.s
+
+# target to generate assembly for a file
+Simulation.cpp.s:
+	$(MAKE) -f CMakeFiles/neurone.dir/build.make CMakeFiles/neurone.dir/Simulation.cpp.s
+.PHONY : Simulation.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -174,6 +198,9 @@ help:
 	@echo "... Neuron.o"
 	@echo "... Neuron.i"
 	@echo "... Neuron.s"
+	@echo "... Simulation.o"
+	@echo "... Simulation.i"
+	@echo "... Simulation.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
