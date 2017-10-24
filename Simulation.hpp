@@ -25,10 +25,10 @@ Tableconnexion Connexions;
 	public :
 Simulation(int NbNeurones= 2); 	
 void RunSimulation();
-void UpdateSimulation (int& globalClock, int increment); 
+void UpdateSimulation (int& globalClock); 
 void CreateConnection(const size_t& index1, const size_t& index2);
 bool Connected (const size_t& index1, const size_t& index2) const;
-size_t get_NbNeurones () const ; 
+unsigned int get_NbNeurones () const ; 
 double getNeuronePotential(size_t index) const; 
 	
 	};

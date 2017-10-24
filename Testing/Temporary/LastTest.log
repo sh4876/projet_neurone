@@ -1,0 +1,19 @@
+Start testing: Oct 23 15:07 CEST
+----------------------------------------------------------
+Unable to find executable: neurone_unittest
+1/1 Testing: neurone_unittest
+1/1 Test: neurone_unittest
+Command: ""
+Directory: /home/INTRANET/shmichel/myfiles/3emesemestre/Projet
+"neurone_unittest" start time: 
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"neurone_unittest" end time: Oct 23 15:07 CEST
+"neurone_unittest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 23 15:07 CEST

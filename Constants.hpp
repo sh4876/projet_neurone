@@ -34,3 +34,24 @@ const int Buffersize(STEP_D+1);
 const string Path= "potentials.txt";
 
 #endif
+
+/* const int NB_Neurones(8);
+ * const double NEURONE_RATIO(0.25); //   Inhibitory over Excitatory
+ * 
+ * const int NB_Excitatory(NB_Neurones*(1-NEURONE_RATIO));
+ * const int NB_Inhibitory(NB_NEURONE*NEURONE_RATIO);
+ * 
+ * const double CONNECTION_RATIO(0.01);
+ * const int Ce(NB_Excitatory*CONNECTION_RATIO); //CONNECTIONS_FROM_EXCITATORY
+ * const int Ci(NB_Inhibitory*CONNECTION_RATIO); //CONNECTIONS_FROM_INHIBITORY
+ * const int C_ext(Ce); //EXTERNAL_CONNECTIONS
+ * 
+ * const int WEIGHT_CONNECTION_RATIO(5); //inhibitory over excitatory;
+ * const double Je(0.1); //transmitted value of excitatory spike (weight)
+ * const double Ji(Je*WEIGHT_CONNECTION_RATIO);  //transmitted value of inhibitory spike (weight)
+ * //assert Je et Ji < threshold
+ * 
+ * const double mu_thr(threshold/ (Ce*Je*tau));
+ * const double mu_ext(2*mu_thr); //firing rate for external neuron
+ * 
+ * */

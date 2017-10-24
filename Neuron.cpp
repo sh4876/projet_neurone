@@ -30,8 +30,11 @@ Neuron::~Neuron(){}
 
 bool Neuron::update ( ) {
 	if (!isRefractory(local_clock_)) { // si le neurone est en periode refractaire, il est insensible aux stimuli
-		
+		cout << " calcul du potentiel" << flush;
+		int indexdubuffer((local_clock_)%Delay_);
+		cout << "indexdu buffer " << indexdubuffer << endl;
 		potential_ = C1*potential_ + I_ext_*C2 + buffer_[(local_clock_)%Delay_]; // m-a-j de la valeur du potentiel
+		cout <<"vider de la case du buffer lue " << flush;
 			buffer_[(local_clock_)%Delay_] = 0; //vide la case correspondante du buffer 
 			
 		
@@ -51,13 +54,12 @@ bool Neuron::update ( ) {
 		} else { 
 			cout << "Neurone refractaire " << endl;}
 			++local_clock_;
+			cout << "fin du update dans neurone"<< endl;
 			return false;
 	}
 
 bool Neuron::isRefractory(const int& time) const { // si le temps depuis le dernier spike est < au temps de pause refractaire
 	
-	cout << "temps du derneir spike" << getTimeSpike() << endl;
-	cout << "  temps auquel le prochian spike peut avoir lieu :  " << getTimeSpike()  + STEP_tau_rp <<  endl; 
 	cout <<"time" << time << endl; 
 	return (getTimeSpike()+STEP_tau_rp > time);
 	}
