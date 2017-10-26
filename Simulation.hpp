@@ -15,6 +15,8 @@ using namespace std;
 typedef vector<vector<bool>> Tableconnexion;
 
 class Neuron;
+class Inhibitory;
+class Excitatory;
 
 class Simulation {
 	

@@ -176,6 +176,66 @@ gtest_main/fast:
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+Excitatory.o: Excitatory.cpp.o
+.PHONY : Excitatory.o
+
+# target to build an object file
+Excitatory.cpp.o:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/Excitatory.cpp.o
+	$(MAKE) -f CMakeFiles/neurone.dir/build.make CMakeFiles/neurone.dir/Excitatory.cpp.o
+	$(MAKE) -f CMakeFiles/neurone_unittest.dir/build.make CMakeFiles/neurone_unittest.dir/Excitatory.cpp.o
+.PHONY : Excitatory.cpp.o
+
+Excitatory.i: Excitatory.cpp.i
+.PHONY : Excitatory.i
+
+# target to preprocess a source file
+Excitatory.cpp.i:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/Excitatory.cpp.i
+	$(MAKE) -f CMakeFiles/neurone.dir/build.make CMakeFiles/neurone.dir/Excitatory.cpp.i
+	$(MAKE) -f CMakeFiles/neurone_unittest.dir/build.make CMakeFiles/neurone_unittest.dir/Excitatory.cpp.i
+.PHONY : Excitatory.cpp.i
+
+Excitatory.s: Excitatory.cpp.s
+.PHONY : Excitatory.s
+
+# target to generate assembly for a file
+Excitatory.cpp.s:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/Excitatory.cpp.s
+	$(MAKE) -f CMakeFiles/neurone.dir/build.make CMakeFiles/neurone.dir/Excitatory.cpp.s
+	$(MAKE) -f CMakeFiles/neurone_unittest.dir/build.make CMakeFiles/neurone_unittest.dir/Excitatory.cpp.s
+.PHONY : Excitatory.cpp.s
+
+Inhibitory.o: Inhibitory.cpp.o
+.PHONY : Inhibitory.o
+
+# target to build an object file
+Inhibitory.cpp.o:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/Inhibitory.cpp.o
+	$(MAKE) -f CMakeFiles/neurone.dir/build.make CMakeFiles/neurone.dir/Inhibitory.cpp.o
+	$(MAKE) -f CMakeFiles/neurone_unittest.dir/build.make CMakeFiles/neurone_unittest.dir/Inhibitory.cpp.o
+.PHONY : Inhibitory.cpp.o
+
+Inhibitory.i: Inhibitory.cpp.i
+.PHONY : Inhibitory.i
+
+# target to preprocess a source file
+Inhibitory.cpp.i:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/Inhibitory.cpp.i
+	$(MAKE) -f CMakeFiles/neurone.dir/build.make CMakeFiles/neurone.dir/Inhibitory.cpp.i
+	$(MAKE) -f CMakeFiles/neurone_unittest.dir/build.make CMakeFiles/neurone_unittest.dir/Inhibitory.cpp.i
+.PHONY : Inhibitory.cpp.i
+
+Inhibitory.s: Inhibitory.cpp.s
+.PHONY : Inhibitory.s
+
+# target to generate assembly for a file
+Inhibitory.cpp.s:
+	$(MAKE) -f CMakeFiles/neuron.dir/build.make CMakeFiles/neuron.dir/Inhibitory.cpp.s
+	$(MAKE) -f CMakeFiles/neurone.dir/build.make CMakeFiles/neurone.dir/Inhibitory.cpp.s
+	$(MAKE) -f CMakeFiles/neurone_unittest.dir/build.make CMakeFiles/neurone_unittest.dir/Inhibitory.cpp.s
+.PHONY : Inhibitory.cpp.s
+
 Neuron.o: Neuron.cpp.o
 .PHONY : Neuron.o
 
@@ -301,6 +361,12 @@ help:
 	@echo "... test"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... Excitatory.o"
+	@echo "... Excitatory.i"
+	@echo "... Excitatory.s"
+	@echo "... Inhibitory.o"
+	@echo "... Inhibitory.i"
+	@echo "... Inhibitory.s"
 	@echo "... Neuron.o"
 	@echo "... Neuron.i"
 	@echo "... Neuron.s"

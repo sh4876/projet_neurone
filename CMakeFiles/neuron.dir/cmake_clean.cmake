@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/neuron.dir/Neuron.cpp.o"
+  "CMakeFiles/neuron.dir/Excitatory.cpp.o"
+  "CMakeFiles/neuron.dir/Inhibitory.cpp.o"
   "CMakeFiles/neuron.dir/Simulation.cpp.o"
   "CMakeFiles/neuron.dir/main.cpp.o"
   "neuron.pdb"

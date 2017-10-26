@@ -1,6 +1,8 @@
 #include "Simulation.hpp"
 
 #include "Neuron.hpp"
+#include "Excitatory.hpp"
+#include "Inhibitory.hpp"
 
 #include <iostream>
 #include <cassert>
@@ -8,13 +10,21 @@
 #include <fstream>
 
 using namespace std;
+
 //{}
 // []
 
 Simulation::Simulation(int NbNeurones){
-	Neuron* n1(new Neuron(0));
-	Neuron* n2(new Neuron(I));
-	Neurone.push_back(n1);
+	//Neuron* n1(new Excitatory(0));
+	Neuron* n2(new Excitatory(21));
+	
+	/*
+	 * /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Simulation.cpp:17: undefined reference to `Excitatory::Excitatory(double, int, double, int, int, int)'
+	 * /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Simulation.cpp:18: undefined reference to `Excitatory::Excitatory(double, int, double, int, int, int)'
+
+	 * */
+	 
+	//Neurone.push_back(n1);
 	Neurone.push_back(n2);
 	
 	vector<bool> tabconnection(2, false);
@@ -27,7 +37,7 @@ Simulation::Simulation(int NbNeurones){
 void Simulation::RunSimulation() {
 	int global_clock(STEP_SimulationStart);
 	
-	CreateConnection(0,1);
+	//CreateConnection(0,1);
 					
 	UpdateSimulation(global_clock); 
 	cout <<"      a2  "<< endl;

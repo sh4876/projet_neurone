@@ -2,20 +2,22 @@
 #include <cmath>
 #include <gtest/gtest.h>
 #include "Neuron.hpp" 
+#include "Excitatory.hpp"
+#include "Inhibitory.hpp"
 #include "Simulation.hpp"
 //{}
 //TEST () {}
 
 
 TEST(OneNeurone, OneUpdate) {
-	Neuron neuron;
+	Excitatory neuron;
 	neuron.set_Iext(1.0);
 	neuron.update();
 	EXPECT_EQ(1.0*20*(1-exp(-0.1/20)), neuron.getPotential());
 }
 
 TEST(OneNeurone, TwoUpdates) {
-	Neuron neuron;
+	Excitatory neuron;
 	neuron.set_Iext(1.0);
 	neuron.update();
 	neuron.update();
