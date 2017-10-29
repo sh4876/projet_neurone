@@ -19,7 +19,7 @@ potential_(potential)
 
 {	///admit initialisation is in ms
 	
-	timeSpike_=-STEP_tau_rp; // permet de spiker des le temps zero (voir pour cela la fonction isRefractory)
+	timeSpike_=0; // //permet de spiker des le temps zero (voir pour cela la fonction isRefractory)
 	spikeNumber_= 0;
 	Delay_=Delay/h;
 	local_clock_=local_clock/h;
@@ -31,11 +31,11 @@ potential_(potential)
 Neuron::~Neuron(){}
 
 bool Neuron::update ( ) {
-	cout << "peut spiker a partir de : " << getTimeSpike()+STEP_tau_rp << endl; 
+	// cout << "peut spiker a partir de : " << getTimeSpike()+STEP_tau_rp << endl; 
 	if (!isRefractory(local_clock_)) { // si le neurone est en periode refractaire, il est insensible aux stimuli
 
 		cout << "local clock " << local_clock_<< endl;
-		
+		cout << "INDEX DU BUFFER LU "<< (local_clock_)%Delay_ << endl; 
 		
 		potential_ = C1*potential_ + I_ext_*C2 + buffer_[(local_clock_)%Delay_]; // m-a-j de la valeur du potentiel
 		
@@ -61,8 +61,12 @@ bool Neuron::update ( ) {
 	}
 
 bool Neuron::isRefractory(const int& time) const { // si le temps depuis le dernier spike est < au temps de pause refractaire
-	cout << "getTimeSpike(): " << getTimeSpike() << "+STEP_tau_rp : " << STEP_tau_rp << " > time" << time << endl;  
-	return (getTimeSpike()+STEP_tau_rp > time);
+	if (getSpikeNumber() <= 0 )  {
+		return false;	}
+		
+	else { cout << "getTimeSpike(): " << getTimeSpike()  << endl; 
+		return (getTimeSpike()+STEP_tau_rp > time);}
+	
 	}
 
 

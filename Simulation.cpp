@@ -15,16 +15,10 @@ using namespace std;
 // []
 
 Simulation::Simulation(int NbNeurones){
-	//Neuron* n1(new Excitatory(0));
-	Neuron* n2(new Excitatory(21));
+	Neuron* n1(new Excitatory(1.01));
+	Neuron* n2(new Excitatory(0,1.5));
 	
-	/*
-	 * /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Simulation.cpp:17: undefined reference to `Excitatory::Excitatory(double, int, double, int, int, int)'
-	 * /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/Simulation.cpp:18: undefined reference to `Excitatory::Excitatory(double, int, double, int, int, int)'
-
-	 * */
-	 
-	//Neurone.push_back(n1);
+	Neurone.push_back(n1);
 	Neurone.push_back(n2);
 	
 	vector<bool> tabconnection(2, false);
@@ -37,7 +31,7 @@ Simulation::Simulation(int NbNeurones){
 void Simulation::RunSimulation() {
 	int global_clock(STEP_SimulationStart);
 	
-	//CreateConnection(0,1);
+	CreateConnection(0,1);
 					
 	UpdateSimulation(global_clock); 
 	cout <<"      a2  "<< endl;

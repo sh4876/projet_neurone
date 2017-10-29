@@ -21,7 +21,7 @@ const int C_ext(Ce); //EXTERNAL_CONNECTIONS
 const int I(1); // l intensite du courant 
 const double h(0.1); // intervalle de temps en millisecondes
 const double SimulationStart(0);
-const double SimulationStop(300);
+const double SimulationStop(96);
 const double tau(20); // membrane time constant of an excitatory neurone in ms
 const double Vr(0.0); // reset potential in mV
 const double tau_rp(20); //refractory period in ms

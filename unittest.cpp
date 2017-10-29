@@ -46,6 +46,41 @@ TEST(SimulationwithTwoNeurones, ConnectionToItself) {
 	EXPECT_FALSE(sim.Connected(0,0));
 }
 
+TEST(OneNeurones, ResetPotential)  {
+	Excitatory n1 (1.01);
+	
+	// time_spike le temps auquel le neurone 1 va spiker (chez moi a 923 pour ces parametres)
+	for (int i(0); i < 923 +D; ++i) {
+		if (n1.update()) {
+			EXPECT_EQ(0.0, n1.getPotential());
+			}} }
+
+TEST(OneNeuron, FirstSpikeTime) { // fonctionnel
+	Excitatory n(1.01);
+	for (int i(0); i <= 922; ++i ) {
+		n.update();}
+	EXPECT_EQ(0, n.getSpikeNumber());
+	n.update();
+	EXPECT_EQ(1, n.getSpikeNumber());
+	EXPECT_EQ(0.0, n.getPotential());
+	}
+	
+	/*
+TEST(TwoNeurones, SpikeTransmission)  {
+	Excitatory n1 (1.01);
+	Excitatory n2(0, D) ; //delay as defined in the cst file
+	// time_spike le temps auquel le neurone 1 va spiker (chez moi a 923 pour ces parametres)
+	for (int i(0); i < 923 +D; ++i) {
+		if (n1.update()) {
+			n2.writeinBuffer(i+D);
+			}
+		} 
+	n2.update(); // logiquement on va lire la case contenant le potentiel transmis par n1.
+	EXPECT_EQ(Je, n2.getPotential());
+	}
+
+
+*/
 int main (int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);
 	return RUN_ALL_TESTS();

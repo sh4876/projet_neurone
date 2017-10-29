@@ -11,7 +11,7 @@ Inhibitory::Inhibitory(double Iexterne, double Delay, double potential, int loca
 void Inhibitory::writeinBuffer(const int& time){	
 	size_t index (0);
 	index = (time + buffer_.size()-1)%buffer_.size();
-	buffer_[index] += Ji;
+	buffer_[index] -= Ji;
 	}
 
 Inhibitory::~Inhibitory(){}
