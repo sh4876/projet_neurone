@@ -1,0 +1,2 @@
+OUTPUT_DIRECTORY       = /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/build/doc_doxygen/
+INPUT                  = /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/src/../src/ /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/src/../docs

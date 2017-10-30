@@ -1,0 +1,64 @@
+\hypertarget{classNeuron}{\section{Neuron Class Reference}
+\label{classNeuron}\index{Neuron@{Neuron}}
+}
+Inheritance diagram for Neuron\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classNeuron}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classNeuron_a7124c9a35644b0ae3fd47f7838c87950}{Neuron} (double I\-\_\-ext, double Delay, double potential, int local\-\_\-clock)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hypertarget{classNeuron_a94a250ce7e167760e593979b899745b1}{virtual \hyperlink{classNeuron_a94a250ce7e167760e593979b899745b1}{$\sim$\-Neuron} ()}\label{classNeuron_a94a250ce7e167760e593979b899745b1}
+
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+\hypertarget{classNeuron_ae2bc004a58621da0d1c51591400ca87d}{double \hyperlink{classNeuron_ae2bc004a58621da0d1c51591400ca87d}{get\-Potential} () const }\label{classNeuron_ae2bc004a58621da0d1c51591400ca87d}
+
+\begin{DoxyCompactList}\small\item\em gets the potential of the membrane \end{DoxyCompactList}\item 
+\hypertarget{classNeuron_af4482bf7c03f6ac6d6a510fd9c022073}{int \hyperlink{classNeuron_af4482bf7c03f6ac6d6a510fd9c022073}{get\-Spike\-Number} () const }\label{classNeuron_af4482bf7c03f6ac6d6a510fd9c022073}
+
+\begin{DoxyCompactList}\small\item\em gets the number of spike since simulation start \end{DoxyCompactList}\item 
+\hypertarget{classNeuron_ac800b0047abe17000848648ed81e1017}{int \hyperlink{classNeuron_ac800b0047abe17000848648ed81e1017}{get\-Time\-Spike} () const }\label{classNeuron_ac800b0047abe17000848648ed81e1017}
+
+\begin{DoxyCompactList}\small\item\em gets time of last spike \end{DoxyCompactList}\item 
+\hypertarget{classNeuron_a41c979859ae91f8f80d58b2d01e1421e}{virtual void \hyperlink{classNeuron_a41c979859ae91f8f80d58b2d01e1421e}{writein\-Buffer} (const int \&time)=0}\label{classNeuron_a41c979859ae91f8f80d58b2d01e1421e}
+
+\begin{DoxyCompactList}\small\item\em neuron spiking at time (localclock ) sends a signal to every neuron it s connected to \end{DoxyCompactList}\item 
+\hypertarget{classNeuron_a7cfb9edb8de019bcaaea6cdf9c8e3b93}{void \hyperlink{classNeuron_a7cfb9edb8de019bcaaea6cdf9c8e3b93}{set\-\_\-\-Iext} (double)}\label{classNeuron_a7cfb9edb8de019bcaaea6cdf9c8e3b93}
+
+\begin{DoxyCompactList}\small\item\em setter of external current \end{DoxyCompactList}\item 
+\hypertarget{classNeuron_ade349102c17d508352a1061798083ba2}{bool \hyperlink{classNeuron_ade349102c17d508352a1061798083ba2}{update} ()}\label{classNeuron_ade349102c17d508352a1061798083ba2}
+
+\begin{DoxyCompactList}\small\item\em updates the neuron of one step \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classNeuron_a772adb0c955d13eb5330560a2bfeafa0}{Buffer {\bfseries buffer\-\_\-}}\label{classNeuron_a772adb0c955d13eb5330560a2bfeafa0}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classNeuron_a7124c9a35644b0ae3fd47f7838c87950}{\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\subsubsection[{Neuron}]{\setlength{\rightskip}{0pt plus 5cm}Neuron\-::\-Neuron (
+\begin{DoxyParamCaption}
+\item[{double}]{I\-\_\-ext, }
+\item[{double}]{Delay, }
+\item[{double}]{potential, }
+\item[{int}]{local\-\_\-clock}
+\end{DoxyParamCaption}
+)}}\label{classNeuron_a7124c9a35644b0ae3fd47f7838c87950}
+
+
+constructor 
+
+admit initialisation is in ms 
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/myfiles/3emesemestre/\-Projet/src/Neuron.\-hpp\item 
+/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/myfiles/3emesemestre/\-Projet/src/Neuron.\-cpp\end{DoxyCompactItemize}
