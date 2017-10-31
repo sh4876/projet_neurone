@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['update',['update',['../classNeuron.html#ade349102c17d508352a1061798083ba2',1,'Neuron']]],
-  ['updatesimulation',['UpdateSimulation',['../classSimulation.html#a2d35287145b4c708ecc473b5ce871ae3',1,'Simulation']]]
+  ['set_5fiext',['set_Iext',['../classNeuron.html#a7cfb9edb8de019bcaaea6cdf9c8e3b93',1,'Neuron']]],
+  ['setexternalnoise',['setExternalNoise',['../classNeuron.html#a443fcbb53284a313600338fc3baba218',1,'Neuron']]],
+  ['simulation',['Simulation',['../classSimulation.html',1,'Simulation'],['../classSimulation.html#af57d7b7d29a10e0d182e66ecca1d3208',1,'Simulation::Simulation()']]]
 ];

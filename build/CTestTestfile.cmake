@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/src
-# Build directory: /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/build
+# Source directory: /home/INTRANET/shmichel/Desktop/myfiles/3emesemestre/Projet/src
+# Build directory: /home/INTRANET/shmichel/Desktop/myfiles/3emesemestre/Projet/build
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

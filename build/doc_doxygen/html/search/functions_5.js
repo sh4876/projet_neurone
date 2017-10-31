@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['update',['update',['../classNeuron.html#ade349102c17d508352a1061798083ba2',1,'Neuron']]],
-  ['updatesimulation',['UpdateSimulation',['../classSimulation.html#a2d35287145b4c708ecc473b5ce871ae3',1,'Simulation']]]
+  ['runsimulation',['RunSimulation',['../classSimulation.html#aa7736d6f953c5e35696b8ac2397a4bea',1,'Simulation']]]
 ];

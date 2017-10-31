@@ -1,4 +1,4 @@
-# Install script for directory: /home/INTRANET/shmichel/myfiles/3emesemestre/Projet/src/gtest
+# Install script for directory: /home/INTRANET/shmichel/Desktop/myfiles/3emesemestre/Projet/src/gtest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -10,13 +10,52 @@ Inheritance diagram for Excitatory\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classExcitatory_a5512a2acf707cd01901d245282089be6}{{\bfseries Excitatory} (double I\-\_\-ext=I, double Delay=D, double potential=Vr, int local\-\_\-clock=0)}\label{classExcitatory_a5512a2acf707cd01901d245282089be6}
-
-\item 
+\hyperlink{classExcitatory_a62afe8d17694d8b435ca5a289cd3b2eb}{Excitatory} (double I\-\_\-ext=I)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{classExcitatory_a06f2bb4a4a37cd215dfa453db9ba7424}{$\sim$\-Excitatory} () override
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
 void \hyperlink{classExcitatory_a62f52a9cc2851b290357d7f4613b9070}{writein\-Buffer} (const int \&time) override
-\begin{DoxyCompactList}\small\item\em write in ring buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em writes in its ring buffer the inputs received from spiking neurons it's connected to \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classExcitatory_a62afe8d17694d8b435ca5a289cd3b2eb}{\index{Excitatory@{Excitatory}!Excitatory@{Excitatory}}
+\index{Excitatory@{Excitatory}!Excitatory@{Excitatory}}
+\subsubsection[{Excitatory}]{\setlength{\rightskip}{0pt plus 5cm}Excitatory\-::\-Excitatory (
+\begin{DoxyParamCaption}
+\item[{double}]{Iexterne = {\ttfamily I}}
+\end{DoxyParamCaption}
+)}}\label{classExcitatory_a62afe8d17694d8b435ca5a289cd3b2eb}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em @see} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Constructor 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em external} & current (I as default value) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classExcitatory_a06f2bb4a4a37cd215dfa453db9ba7424}{\index{Excitatory@{Excitatory}!$\sim$\-Excitatory@{$\sim$\-Excitatory}}
+\index{$\sim$\-Excitatory@{$\sim$\-Excitatory}!Excitatory@{Excitatory}}
+\subsubsection[{$\sim$\-Excitatory}]{\setlength{\rightskip}{0pt plus 5cm}Excitatory\-::$\sim$\-Excitatory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}}}\label{classExcitatory_a06f2bb4a4a37cd215dfa453db9ba7424}
+
+
+destructor 
+
+Destructor 
 
 \subsection{Member Function Documentation}
 \hypertarget{classExcitatory_a62f52a9cc2851b290357d7f4613b9070}{\index{Excitatory@{Excitatory}!writein\-Buffer@{writein\-Buffer}}
@@ -28,19 +67,16 @@ void \hyperlink{classExcitatory_a62f52a9cc2851b290357d7f4613b9070}{writein\-Buff
 )\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classExcitatory_a62f52a9cc2851b290357d7f4613b9070}
 
 
-write in ring buffer. 
+writes in its ring buffer the inputs received from spiking neurons it's connected to 
 
-erer 
+writein\-Buffer A\-D\-D\-S an current at a certain index in the ring buffer for it to be added to the potential latter in the simulation 
 \begin{DoxyParams}{Parameters}
-{\em hallo} & \\
+{\em time} & at wich the neuron sending the input had a spike \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See Also}
-hallo 
+in \hyperlink{classNeuron_ade349102c17d508352a1061798083ba2}{update} 
 \end{DoxySeeAlso}
-\begin{DoxyReturn}{Returns}
-double 
-\end{DoxyReturn}
 
 
 Implements \hyperlink{classNeuron_a41c979859ae91f8f80d58b2d01e1421e}{Neuron}.
@@ -49,5 +85,5 @@ Implements \hyperlink{classNeuron_a41c979859ae91f8f80d58b2d01e1421e}{Neuron}.
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/myfiles/3emesemestre/\-Projet/src/Excitatory.\-hpp\item 
-/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/myfiles/3emesemestre/\-Projet/src/Excitatory.\-cpp\end{DoxyCompactItemize}
+/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/\-Desktop/myfiles/3emesemestre/\-Projet/src/Excitatory.\-hpp\item 
+/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/\-Desktop/myfiles/3emesemestre/\-Projet/src/Excitatory.\-cpp\end{DoxyCompactItemize}

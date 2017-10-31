@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,21 +88,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="classExcitatory.html">Excitatory</a>, including all inherited members.</p>
 <table class="directory">
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>buffer_</b> (defined in <a class="el" href="classNeuron.html">Neuron</a>)</td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>Excitatory</b>(double I_ext=I, double Delay=D, double potential=Vr, int local_clock=0) (defined in <a class="el" href="classExcitatory.html">Excitatory</a>)</td><td class="entry"><a class="el" href="classExcitatory.html">Excitatory</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classNeuron.html#a772adb0c955d13eb5330560a2bfeafa0">buffer_</a></td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classExcitatory.html#a62afe8d17694d8b435ca5a289cd3b2eb">Excitatory</a>(double I_ext=I)</td><td class="entry"><a class="el" href="classExcitatory.html">Excitatory</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classNeuron.html#ae2bc004a58621da0d1c51591400ca87d">getPotential</a>() const </td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classNeuron.html#af4482bf7c03f6ac6d6a510fd9c022073">getSpikeNumber</a>() const </td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classNeuron.html#ac800b0047abe17000848648ed81e1017">getTimeSpike</a>() const </td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classNeuron.html#a7124c9a35644b0ae3fd47f7838c87950">Neuron</a>(double I_ext, double Delay, double potential, int local_clock)</td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNeuron.html#ab5d525bfb8a3ad0442c3e2980b5a144a">Neuron</a>(double I_ext)</td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classNeuron.html#a7cfb9edb8de019bcaaea6cdf9c8e3b93">set_Iext</a>(double)</td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classNeuron.html#a443fcbb53284a313600338fc3baba218">setExternalNoise</a>(bool YesOrNo)</td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>targets</b> (defined in <a class="el" href="classNeuron.html">Neuron</a>)</td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classNeuron.html#ade349102c17d508352a1061798083ba2">update</a>()</td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classExcitatory.html#a62f52a9cc2851b290357d7f4613b9070">writeinBuffer</a>(const int &amp;time) override</td><td class="entry"><a class="el" href="classExcitatory.html">Excitatory</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~Excitatory</b>() override (defined in <a class="el" href="classExcitatory.html">Excitatory</a>)</td><td class="entry"><a class="el" href="classExcitatory.html">Excitatory</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classExcitatory.html#a06f2bb4a4a37cd215dfa453db9ba7424">~Excitatory</a>() override</td><td class="entry"><a class="el" href="classExcitatory.html">Excitatory</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classNeuron.html#a94a250ce7e167760e593979b899745b1">~Neuron</a>()</td><td class="entry"><a class="el" href="classNeuron.html">Neuron</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 30 2017 14:27:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 31 2017 07:58:04 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,32 +91,111 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac8faed6aaf60d10a6b0a6f87c4c90bd2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8faed6aaf60d10a6b0a6f87c4c90bd2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#ac8faed6aaf60d10a6b0a6f87c4c90bd2">Simulation</a> (int NbNeurones=2)</td></tr>
-<tr class="memdesc:ac8faed6aaf60d10a6b0a6f87c4c90bd2"><td class="mdescLeft">&#160;</td><td class="mdescRight">constuctor <br/></td></tr>
-<tr class="separator:ac8faed6aaf60d10a6b0a6f87c4c90bd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7736d6f953c5e35696b8ac2397a4bea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa7736d6f953c5e35696b8ac2397a4bea"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#aa7736d6f953c5e35696b8ac2397a4bea">RunSimulation</a> ()</td></tr>
-<tr class="memdesc:aa7736d6f953c5e35696b8ac2397a4bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">runs the simulation <br/></td></tr>
+<tr class="memitem:af57d7b7d29a10e0d182e66ecca1d3208"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#af57d7b7d29a10e0d182e66ecca1d3208">Simulation</a> (unsigned int NbNeurones=NB_Neurones)</td></tr>
+<tr class="memdesc:af57d7b7d29a10e0d182e66ecca1d3208"><td class="mdescLeft">&#160;</td><td class="mdescRight">constuctor  <a href="#af57d7b7d29a10e0d182e66ecca1d3208">More...</a><br/></td></tr>
+<tr class="separator:af57d7b7d29a10e0d182e66ecca1d3208"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7736d6f953c5e35696b8ac2397a4bea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#aa7736d6f953c5e35696b8ac2397a4bea">RunSimulation</a> ()</td></tr>
+<tr class="memdesc:aa7736d6f953c5e35696b8ac2397a4bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">runs the simulation  <a href="#aa7736d6f953c5e35696b8ac2397a4bea">More...</a><br/></td></tr>
 <tr class="separator:aa7736d6f953c5e35696b8ac2397a4bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d35287145b4c708ecc473b5ce871ae3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a2d35287145b4c708ecc473b5ce871ae3">UpdateSimulation</a> (int &amp;globalClock)</td></tr>
-<tr class="memdesc:a2d35287145b4c708ecc473b5ce871ae3"><td class="mdescLeft">&#160;</td><td class="mdescRight">updates simulation from globalClock until SimulationEnd  <a href="#a2d35287145b4c708ecc473b5ce871ae3">More...</a><br/></td></tr>
-<tr class="separator:a2d35287145b4c708ecc473b5ce871ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59aacc98d8ef86ab6b5b7b1c4f1c92fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a59aacc98d8ef86ab6b5b7b1c4f1c92fd">CreateConnection</a> (const size_t &amp;index1, const size_t &amp;index2)</td></tr>
 <tr class="memdesc:a59aacc98d8ef86ab6b5b7b1c4f1c92fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates connections between two neurones  <a href="#a59aacc98d8ef86ab6b5b7b1c4f1c92fd">More...</a><br/></td></tr>
 <tr class="separator:a59aacc98d8ef86ab6b5b7b1c4f1c92fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fa966b55e89ca6aa6c74f1e9317ee15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6fa966b55e89ca6aa6c74f1e9317ee15"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Connected</b> (const size_t &amp;index1, const size_t &amp;index2) const </td></tr>
+<tr class="memitem:ae6a122f08ee8237f50cc426eace533f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#ae6a122f08ee8237f50cc426eace533f6">ConnectNetwork</a> ()</td></tr>
+<tr class="separator:ae6a122f08ee8237f50cc426eace533f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fa966b55e89ca6aa6c74f1e9317ee15"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a6fa966b55e89ca6aa6c74f1e9317ee15">Connected</a> (const size_t &amp;index1, const size_t &amp;index2) const </td></tr>
+<tr class="memdesc:a6fa966b55e89ca6aa6c74f1e9317ee15"><td class="mdescLeft">&#160;</td><td class="mdescRight">used in unittests  <a href="#a6fa966b55e89ca6aa6c74f1e9317ee15">More...</a><br/></td></tr>
 <tr class="separator:a6fa966b55e89ca6aa6c74f1e9317ee15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fe763c284ff62e74bdf52656251d93a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3fe763c284ff62e74bdf52656251d93a"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a3fe763c284ff62e74bdf52656251d93a">get_NbNeurones</a> () const </td></tr>
-<tr class="memdesc:a3fe763c284ff62e74bdf52656251d93a"><td class="mdescLeft">&#160;</td><td class="mdescRight">return number of neuron in the simulation <br/></td></tr>
+<tr class="memitem:a3fe763c284ff62e74bdf52656251d93a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a3fe763c284ff62e74bdf52656251d93a">get_NbNeurones</a> () const </td></tr>
+<tr class="memdesc:a3fe763c284ff62e74bdf52656251d93a"><td class="mdescLeft">&#160;</td><td class="mdescRight">return number of neuron in the simulation  <a href="#a3fe763c284ff62e74bdf52656251d93a">More...</a><br/></td></tr>
 <tr class="separator:a3fe763c284ff62e74bdf52656251d93a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bbb7128a50ceb957d6e04f9719b88d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9bbb7128a50ceb957d6e04f9719b88d1"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>getNeuronePotential</b> (size_t index) const </td></tr>
+<tr class="memitem:a9bbb7128a50ceb957d6e04f9719b88d1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSimulation.html#a9bbb7128a50ceb957d6e04f9719b88d1">getNeuronePotential</a> (size_t index) const </td></tr>
+<tr class="memdesc:a9bbb7128a50ceb957d6e04f9719b88d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the potential of a given neuron  <a href="#a9bbb7128a50ceb957d6e04f9719b88d1">More...</a><br/></td></tr>
 <tr class="separator:a9bbb7128a50ceb957d6e04f9719b88d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="af57d7b7d29a10e0d182e66ecca1d3208"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Simulation::Simulation </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>NbNeurones</em> = <code>NB_Neurones</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>constuctor </p>
+<p>Constructor </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">total</td><td>Number of neurone (NB_Neurones as default value) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a6fa966b55e89ca6aa6c74f1e9317ee15"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Simulation::Connected </td>
+          <td>(</td>
+          <td class="paramtype">const size_t &amp;&#160;</td>
+          <td class="paramname"><em>index1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t &amp;&#160;</td>
+          <td class="paramname"><em>index2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>used in unittests </p>
+<p>methods used in unittests</p>
+<p>attests if to neurons are connected</p>
+<p>Connected </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indexes</td><td>of two neurones in the table </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd>used in unittests </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>if neuron of index2 is a target of neuron of index1 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae6a122f08ee8237f50cc426eace533f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simulation::ConnectNetwork </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>randomly connects the whole network</p>
+<p>ConnectNetwork generates the random connection between the neurons of the table </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classSimulation.html#aa7736d6f953c5e35696b8ac2397a4bea" title="runs the simulation ">RunSimulation</a> </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a59aacc98d8ef86ab6b5b7b1c4f1c92fd"></a>
 <div class="memitem">
 <div class="memproto">
@@ -142,39 +221,91 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>getNeuronePotential
 </div><div class="memdoc">
 
 <p>creates connections between two neurones </p>
-<p>index1=neurone presynaptique , index2 = neurone postsynaptique</p>
-<p>empeche qu un neurone soit connecte a lui meme </p>
+<p>CreateConnection neuron of index2 becomes a target of neuron of index1 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">indexes</td><td>of two neurones in the table </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classSimulation.html#ae6a122f08ee8237f50cc426eace533f6">ConnectNetwork</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a2d35287145b4c708ecc473b5ce871ae3"></a>
+<a class="anchor" id="a3fe763c284ff62e74bdf52656251d93a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Simulation::UpdateSimulation </td>
+          <td class="memname">unsigned int Simulation::get_NbNeurones </td>
           <td>(</td>
-          <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>globalClock</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>return number of neuron in the simulation </p>
+<p>get_NbNeurones </p>
+<dl class="section see"><dt>See Also</dt><dd>used in unittests </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>number of neurones in the table </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9bbb7128a50ceb957d6e04f9719b88d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Simulation::getNeuronePotential </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>return the potential of a given neuron </p>
+<p>getNeuronePotential </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>of the neurone of which we want to know the potential </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd>used in unittests </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>potential of given neuron </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa7736d6f953c5e35696b8ac2397a4bea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Simulation::RunSimulation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>updates simulation from globalClock until SimulationEnd </p>
-<p>update du neurone dans tous les cas</p>
-<p>on rentre dans cette boucle si le neurone a eu un spike variable locale pour optimiser alors pour chaque neurone avec lequel il est connecté, on remplie la case correspondante du buffer </p>
+<p>runs the simulation </p>
+<p>RunSimulation makes the connections between the neurones of the network updates until the end of the simulation </p>
+<dl class="section see"><dt>See Also</dt><dd>main </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/src/<a class="el" href="Simulation_8hpp_source.html">Simulation.hpp</a></li>
-<li>/home/INTRANET/shmichel/myfiles/3emesemestre/Projet/src/Simulation.cpp</li>
+<li>/home/INTRANET/shmichel/Desktop/myfiles/3emesemestre/Projet/src/<a class="el" href="Simulation_8hpp_source.html">Simulation.hpp</a></li>
+<li>/home/INTRANET/shmichel/Desktop/myfiles/3emesemestre/Projet/src/Simulation.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 30 2017 14:27:52 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 31 2017 07:58:04 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

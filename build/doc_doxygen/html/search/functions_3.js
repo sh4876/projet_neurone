@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['runsimulation',['RunSimulation',['../classSimulation.html#aa7736d6f953c5e35696b8ac2397a4bea',1,'Simulation']]]
+  ['inhibitory',['Inhibitory',['../classInhibitory.html#acb4d1d9eaf926ad89a87a110eeda8516',1,'Inhibitory']]]
 ];

@@ -4,28 +4,81 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classSimulation_ac8faed6aaf60d10a6b0a6f87c4c90bd2}{\hyperlink{classSimulation_ac8faed6aaf60d10a6b0a6f87c4c90bd2}{Simulation} (int Nb\-Neurones=2)}\label{classSimulation_ac8faed6aaf60d10a6b0a6f87c4c90bd2}
-
+\hyperlink{classSimulation_af57d7b7d29a10e0d182e66ecca1d3208}{Simulation} (unsigned int Nb\-Neurones=N\-B\-\_\-\-Neurones)
 \begin{DoxyCompactList}\small\item\em constuctor \end{DoxyCompactList}\item 
-\hypertarget{classSimulation_aa7736d6f953c5e35696b8ac2397a4bea}{void \hyperlink{classSimulation_aa7736d6f953c5e35696b8ac2397a4bea}{Run\-Simulation} ()}\label{classSimulation_aa7736d6f953c5e35696b8ac2397a4bea}
-
+void \hyperlink{classSimulation_aa7736d6f953c5e35696b8ac2397a4bea}{Run\-Simulation} ()
 \begin{DoxyCompactList}\small\item\em runs the simulation \end{DoxyCompactList}\item 
-void \hyperlink{classSimulation_a2d35287145b4c708ecc473b5ce871ae3}{Update\-Simulation} (int \&global\-Clock)
-\begin{DoxyCompactList}\small\item\em updates simulation from global\-Clock until Simulation\-End \end{DoxyCompactList}\item 
 void \hyperlink{classSimulation_a59aacc98d8ef86ab6b5b7b1c4f1c92fd}{Create\-Connection} (const size\-\_\-t \&index1, const size\-\_\-t \&index2)
 \begin{DoxyCompactList}\small\item\em creates connections between two neurones \end{DoxyCompactList}\item 
-\hypertarget{classSimulation_a6fa966b55e89ca6aa6c74f1e9317ee15}{bool {\bfseries Connected} (const size\-\_\-t \&index1, const size\-\_\-t \&index2) const }\label{classSimulation_a6fa966b55e89ca6aa6c74f1e9317ee15}
-
+void \hyperlink{classSimulation_ae6a122f08ee8237f50cc426eace533f6}{Connect\-Network} ()
 \item 
-\hypertarget{classSimulation_a3fe763c284ff62e74bdf52656251d93a}{unsigned int \hyperlink{classSimulation_a3fe763c284ff62e74bdf52656251d93a}{get\-\_\-\-Nb\-Neurones} () const }\label{classSimulation_a3fe763c284ff62e74bdf52656251d93a}
-
+bool \hyperlink{classSimulation_a6fa966b55e89ca6aa6c74f1e9317ee15}{Connected} (const size\-\_\-t \&index1, const size\-\_\-t \&index2) const 
+\begin{DoxyCompactList}\small\item\em used in unittests \end{DoxyCompactList}\item 
+unsigned int \hyperlink{classSimulation_a3fe763c284ff62e74bdf52656251d93a}{get\-\_\-\-Nb\-Neurones} () const 
 \begin{DoxyCompactList}\small\item\em return number of neuron in the simulation \end{DoxyCompactList}\item 
-\hypertarget{classSimulation_a9bbb7128a50ceb957d6e04f9719b88d1}{double {\bfseries get\-Neurone\-Potential} (size\-\_\-t index) const }\label{classSimulation_a9bbb7128a50ceb957d6e04f9719b88d1}
+double \hyperlink{classSimulation_a9bbb7128a50ceb957d6e04f9719b88d1}{get\-Neurone\-Potential} (size\-\_\-t index) const 
+\begin{DoxyCompactList}\small\item\em return the potential of a given neuron \end{DoxyCompactList}\end{DoxyCompactItemize}
 
-\end{DoxyCompactItemize}
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSimulation_af57d7b7d29a10e0d182e66ecca1d3208}{\index{Simulation@{Simulation}!Simulation@{Simulation}}
+\index{Simulation@{Simulation}!Simulation@{Simulation}}
+\subsubsection[{Simulation}]{\setlength{\rightskip}{0pt plus 5cm}Simulation\-::\-Simulation (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{Nb\-Neurones = {\ttfamily NB\-\_\-Neurones}}
+\end{DoxyParamCaption}
+)}}\label{classSimulation_af57d7b7d29a10e0d182e66ecca1d3208}
+
+
+constuctor 
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em total} & Number of neurone (N\-B\-\_\-\-Neurones as default value) \\
+\hline
+\end{DoxyParams}
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classSimulation_a6fa966b55e89ca6aa6c74f1e9317ee15}{\index{Simulation@{Simulation}!Connected@{Connected}}
+\index{Connected@{Connected}!Simulation@{Simulation}}
+\subsubsection[{Connected}]{\setlength{\rightskip}{0pt plus 5cm}bool Simulation\-::\-Connected (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t \&}]{index1, }
+\item[{const size\-\_\-t \&}]{index2}
+\end{DoxyParamCaption}
+) const}}\label{classSimulation_a6fa966b55e89ca6aa6c74f1e9317ee15}
+
+
+used in unittests 
+
+methods used in unittests
+
+attests if to neurons are connected
+
+Connected 
+\begin{DoxyParams}{Parameters}
+{\em indexes} & of two neurones in the table \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+used in unittests 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+if neuron of index2 is a target of neuron of index1 
+\end{DoxyReturn}
+\hypertarget{classSimulation_ae6a122f08ee8237f50cc426eace533f6}{\index{Simulation@{Simulation}!Connect\-Network@{Connect\-Network}}
+\index{Connect\-Network@{Connect\-Network}!Simulation@{Simulation}}
+\subsubsection[{Connect\-Network}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation\-::\-Connect\-Network (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSimulation_ae6a122f08ee8237f50cc426eace533f6}
+randomly connects the whole network
+
+Connect\-Network generates the random connection between the neurons of the table \begin{DoxySeeAlso}{See Also}
+\hyperlink{classSimulation_aa7736d6f953c5e35696b8ac2397a4bea}{Run\-Simulation} 
+\end{DoxySeeAlso}
 \hypertarget{classSimulation_a59aacc98d8ef86ab6b5b7b1c4f1c92fd}{\index{Simulation@{Simulation}!Create\-Connection@{Create\-Connection}}
 \index{Create\-Connection@{Create\-Connection}!Simulation@{Simulation}}
 \subsubsection[{Create\-Connection}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation\-::\-Create\-Connection (
@@ -38,24 +91,70 @@ void \hyperlink{classSimulation_a59aacc98d8ef86ab6b5b7b1c4f1c92fd}{Create\-Conne
 
 creates connections between two neurones 
 
-index1=neurone presynaptique , index2 = neurone postsynaptique
-
-empeche qu un neurone soit connecte a lui meme \hypertarget{classSimulation_a2d35287145b4c708ecc473b5ce871ae3}{\index{Simulation@{Simulation}!Update\-Simulation@{Update\-Simulation}}
-\index{Update\-Simulation@{Update\-Simulation}!Simulation@{Simulation}}
-\subsubsection[{Update\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation\-::\-Update\-Simulation (
+Create\-Connection neuron of index2 becomes a target of neuron of index1 
+\begin{DoxyParams}{Parameters}
+{\em indexes} & of two neurones in the table \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classSimulation_ae6a122f08ee8237f50cc426eace533f6}{Connect\-Network} 
+\end{DoxySeeAlso}
+\hypertarget{classSimulation_a3fe763c284ff62e74bdf52656251d93a}{\index{Simulation@{Simulation}!get\-\_\-\-Nb\-Neurones@{get\-\_\-\-Nb\-Neurones}}
+\index{get\-\_\-\-Nb\-Neurones@{get\-\_\-\-Nb\-Neurones}!Simulation@{Simulation}}
+\subsubsection[{get\-\_\-\-Nb\-Neurones}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Simulation\-::get\-\_\-\-Nb\-Neurones (
 \begin{DoxyParamCaption}
-\item[{int \&}]{global\-Clock}
+{}
 \end{DoxyParamCaption}
-)}}\label{classSimulation_a2d35287145b4c708ecc473b5ce871ae3}
+) const}}\label{classSimulation_a3fe763c284ff62e74bdf52656251d93a}
 
 
-updates simulation from global\-Clock until Simulation\-End 
+return number of neuron in the simulation 
 
-update du neurone dans tous les cas
+get\-\_\-\-Nb\-Neurones \begin{DoxySeeAlso}{See Also}
+used in unittests 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+number of neurones in the table 
+\end{DoxyReturn}
+\hypertarget{classSimulation_a9bbb7128a50ceb957d6e04f9719b88d1}{\index{Simulation@{Simulation}!get\-Neurone\-Potential@{get\-Neurone\-Potential}}
+\index{get\-Neurone\-Potential@{get\-Neurone\-Potential}!Simulation@{Simulation}}
+\subsubsection[{get\-Neurone\-Potential}]{\setlength{\rightskip}{0pt plus 5cm}double Simulation\-::get\-Neurone\-Potential (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{index}
+\end{DoxyParamCaption}
+) const}}\label{classSimulation_a9bbb7128a50ceb957d6e04f9719b88d1}
 
-on rentre dans cette boucle si le neurone a eu un spike variable locale pour optimiser alors pour chaque neurone avec lequel il est connecté, on remplie la case correspondante du buffer 
+
+return the potential of a given neuron 
+
+get\-Neurone\-Potential 
+\begin{DoxyParams}{Parameters}
+{\em index} & of the neurone of which we want to know the potential \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+used in unittests 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+potential of given neuron 
+\end{DoxyReturn}
+\hypertarget{classSimulation_aa7736d6f953c5e35696b8ac2397a4bea}{\index{Simulation@{Simulation}!Run\-Simulation@{Run\-Simulation}}
+\index{Run\-Simulation@{Run\-Simulation}!Simulation@{Simulation}}
+\subsubsection[{Run\-Simulation}]{\setlength{\rightskip}{0pt plus 5cm}void Simulation\-::\-Run\-Simulation (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classSimulation_aa7736d6f953c5e35696b8ac2397a4bea}
+
+
+runs the simulation 
+
+Run\-Simulation makes the connections between the neurones of the network updates until the end of the simulation \begin{DoxySeeAlso}{See Also}
+main 
+\end{DoxySeeAlso}
+
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/myfiles/3emesemestre/\-Projet/src/Simulation.\-hpp\item 
-/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/myfiles/3emesemestre/\-Projet/src/Simulation.\-cpp\end{DoxyCompactItemize}
+/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/\-Desktop/myfiles/3emesemestre/\-Projet/src/Simulation.\-hpp\item 
+/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/\-Desktop/myfiles/3emesemestre/\-Projet/src/Simulation.\-cpp\end{DoxyCompactItemize}

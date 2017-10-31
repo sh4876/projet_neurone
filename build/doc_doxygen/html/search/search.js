@@ -7,16 +7,18 @@
 
 var indexSectionsWithContent =
 {
-  0: "ceginrsuw~",
+  0: "bceginrsuw~",
   1: "eins",
-  2: "cgnrsuw~"
+  2: "ceginrsuw~",
+  3: "b"
 };
 
 var indexSectionNames =
 {
   0: "all",
   1: "classes",
-  2: "functions"
+  2: "functions",
+  3: "variables"
 };
 
 function convertToId(search)

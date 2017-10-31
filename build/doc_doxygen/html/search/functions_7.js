@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7eneuron',['~Neuron',['../classNeuron.html#a94a250ce7e167760e593979b899745b1',1,'Neuron']]]
+  ['update',['update',['../classNeuron.html#ade349102c17d508352a1061798083ba2',1,'Neuron']]]
 ];

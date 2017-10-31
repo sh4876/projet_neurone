@@ -10,16 +10,72 @@ Inheritance diagram for Inhibitory\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classInhibitory_a68602b4762f76965444a4624db6a5165}{{\bfseries Inhibitory} (double I\-\_\-ext=I, double Delay=D, double potential=Vr, int local\-\_\-clock=0)}\label{classInhibitory_a68602b4762f76965444a4624db6a5165}
-
-\item 
-\hypertarget{classInhibitory_a126f7fedd52892995a2017319ee23470}{void \hyperlink{classInhibitory_a126f7fedd52892995a2017319ee23470}{writein\-Buffer} (const int \&time) override}\label{classInhibitory_a126f7fedd52892995a2017319ee23470}
-
-\begin{DoxyCompactList}\small\item\em neuron spiking at time (localclock ) sends a signal to every neuron it s connected to \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hyperlink{classInhibitory_acb4d1d9eaf926ad89a87a110eeda8516}{Inhibitory} (double I\-\_\-ext=I)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{classInhibitory_a790c9bdaecdd9fe967caf2833e6eea93}{$\sim$\-Inhibitory} () override
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+void \hyperlink{classInhibitory_a126f7fedd52892995a2017319ee23470}{writein\-Buffer} (const int \&time) override
+\begin{DoxyCompactList}\small\item\em writes in its ring buffer the inputs received from spiking neurons it's connected to \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classInhibitory_acb4d1d9eaf926ad89a87a110eeda8516}{\index{Inhibitory@{Inhibitory}!Inhibitory@{Inhibitory}}
+\index{Inhibitory@{Inhibitory}!Inhibitory@{Inhibitory}}
+\subsubsection[{Inhibitory}]{\setlength{\rightskip}{0pt plus 5cm}Inhibitory\-::\-Inhibitory (
+\begin{DoxyParamCaption}
+\item[{double}]{Iexterne = {\ttfamily I}}
+\end{DoxyParamCaption}
+)}}\label{classInhibitory_acb4d1d9eaf926ad89a87a110eeda8516}
+
+
+constructor 
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em external} & current (I as default value) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classInhibitory_a790c9bdaecdd9fe967caf2833e6eea93}{\index{Inhibitory@{Inhibitory}!$\sim$\-Inhibitory@{$\sim$\-Inhibitory}}
+\index{$\sim$\-Inhibitory@{$\sim$\-Inhibitory}!Inhibitory@{Inhibitory}}
+\subsubsection[{$\sim$\-Inhibitory}]{\setlength{\rightskip}{0pt plus 5cm}Inhibitory\-::$\sim$\-Inhibitory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}}}\label{classInhibitory_a790c9bdaecdd9fe967caf2833e6eea93}
+
+
+destructor 
+
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classInhibitory_a126f7fedd52892995a2017319ee23470}{\index{Inhibitory@{Inhibitory}!writein\-Buffer@{writein\-Buffer}}
+\index{writein\-Buffer@{writein\-Buffer}!Inhibitory@{Inhibitory}}
+\subsubsection[{writein\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}void Inhibitory\-::writein\-Buffer (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}}\label{classInhibitory_a126f7fedd52892995a2017319ee23470}
+
+
+writes in its ring buffer the inputs received from spiking neurons it's connected to 
+
+writein\-Buffer S\-U\-B\-S\-T\-R\-A\-C\-T\-S an current at a certain index in the ring buffer for it to be added to the potential latter in the simulation 
+\begin{DoxyParams}{Parameters}
+{\em time} & at wich the neuron sending the input had a spike \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See Also}
+in \hyperlink{classNeuron_ade349102c17d508352a1061798083ba2}{update} 
+\end{DoxySeeAlso}
+
+
+Implements \hyperlink{classNeuron_a41c979859ae91f8f80d58b2d01e1421e}{Neuron}.
+
 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/myfiles/3emesemestre/\-Projet/src/Inhibitory.\-hpp\item 
-/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/myfiles/3emesemestre/\-Projet/src/Inhibitory.\-cpp\end{DoxyCompactItemize}
+/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/\-Desktop/myfiles/3emesemestre/\-Projet/src/Inhibitory.\-hpp\item 
+/home/\-I\-N\-T\-R\-A\-N\-E\-T/shmichel/\-Desktop/myfiles/3emesemestre/\-Projet/src/Inhibitory.\-cpp\end{DoxyCompactItemize}
