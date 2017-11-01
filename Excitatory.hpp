@@ -11,13 +11,14 @@
 using namespace std;
 
 class Excitatory : public Neuron {
-	
-	public :
- 	Excitatory(double I_ext= I , double Delay=D, double potential=Vr, int local_clock=0);
-    ~Excitatory() override ;
-  	void writeinBuffer(const int& time ) override ;
-	
-	};
+
+    public :
+    Excitatory(double I_ext= I ); 	//!< constructor
+    ~Excitatory() override ; //!< destructor
+
+	void writeinBuffer(const int& time ) override ; //!< transmitted value of excitatory spike (weight)  // the EPSP amplitude in ms
+
+        };
 
 
 

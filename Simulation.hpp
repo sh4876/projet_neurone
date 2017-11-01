@@ -12,28 +12,31 @@
 
 using namespace std;
 
-typedef vector<vector<bool>> Tableconnexion;
 
 class Neuron;
 class Inhibitory;
 class Excitatory;
 
 class Simulation {
-	
-	private:
-vector<Neuron*> Neurone;
-Tableconnexion Connexions;
 
-	public :
-Simulation(int NbNeurones= 2); 	
-void RunSimulation();
-void UpdateSimulation (int& globalClock); 
-void CreateConnection(const size_t& index1, const size_t& index2);
-bool Connected (const size_t& index1, const size_t& index2) const;
-unsigned int get_NbNeurones () const ; 
-double getNeuronePotential(size_t index) const; 
-	
-	};
+        private:
+vector<Neuron*> Neurone;                //!< saves all the neuron involved in the simulation
+void CreateExcitatory () ;
+void CreateInhibitory () ;
+   
+
+
+        public :
+Simulation();          //!< constuctor
+void RunSimulation(int simulationEnd = STEP_SimulationStop);                           //!< runs the simulation
+void UpdateSimulation (int simulationEnd);       //!< updates simulation from globalClock until SimulationEnd
+void CreateConnection(const size_t& index1, const size_t& index2); //!< creates connections between two neurones
+void ConnectNetwork() ; //!< randomly connects the whole network
+bool Connected (const size_t& index1, const size_t& index2) const; //unecessary
+unsigned int get_NbNeurones () const ; //!< return number of neuron in the simulation
+double getNeuronePotential(size_t index) const; //utile pour les tests
+
+        };
 
 
 
@@ -41,4 +44,3 @@ double getNeuronePotential(size_t index) const;
 
 
 #endif
-

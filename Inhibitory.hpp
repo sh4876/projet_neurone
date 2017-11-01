@@ -11,12 +11,12 @@
 using namespace std;
 
 class Inhibitory : public Neuron {
-	
-	public :
-	Inhibitory(double I_ext= I , double Delay=D, double potential=Vr,  int local_clock=0);
-	~Inhibitory() override;
-	void writeinBuffer(const int& time ) override;
-	
-	};
+
+        public :
+        Inhibitory(double I_ext= I ); //!< constructor	
+        ~Inhibitory() override; //!< destructor
+        void writeinBuffer(const int& time ) override; //!< writes in its ring buffer the inputs received from spiking neurons it's connected to
+
+        };
 
 #endif
