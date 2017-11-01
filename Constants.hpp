@@ -1,64 +1,45 @@
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
 
-
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-const int NB_Neurones(8);
-const double NEURONE_RATIO(0.25); //!<  Inhibitory over Excitatory
+const int NB_NEURONS(40); 			//!<  number of neurons 				(DEFAULT)
+const double END_SIMULATION(95); 	//!< End time of simulation in ms 		(DEFAULT)
 
-const int NB_Excitatory(NB_Neurones*(1-NEURONE_RATIO));
-const int NB_Inhibitory(NB_Neurones*NEURONE_RATIO);
+const int WEIGHT_CONNECTION_RATIO(5);	//!< inhibitory over excitatory  	(DEFAULT)
+const int ETA(2) ; 						//!<  external firing rate over rate to reach threshold   (DEFAULT)
 
-const double CONNECTION_RATIO(0.1);
-const int Ce(NB_Excitatory*CONNECTION_RATIO); //!< CONNECTIONS_FROM_EXCITATORY
-const int Ci(NB_Inhibitory*CONNECTION_RATIO); //!< CONNECTIONS_FROM_INHIBITORY
-const int C_ext(Ce); //!< EXTERNAL_CONNECTIONS
+const double NEURON_RATIO(0.25); 	//!<  Inhibitory over Excitatory 	(UNCHANGED)
+const double CONNECTION_RATIO(0.1);	//!< connection ratio 				(UNCHANGED)
+
+/// values that can t be changed inside of the simulation :
+
+const double h(0.1); 				//!< time interval in ms 			(UNCHANGED)
+
+const double tau(20); 				//!<  membrane time constant of an excitatory neurone in ms (UNCHANGED)
+const double Vr(0.0); 				//!<  reset potential in mV 		(UNCHANGED)
+const double tau_rp(20); 			//!< refractory period in ms 		(UNCHANGED)
+const double threshold(20); 		//!<  threshold potential in mV 	(UNCHANGED)
+const double R(20); 				//!<  resistance in GOh 			(UNCHANGED)
+const double D(1.5); 				//!<  the delay in ms 				(UNCHANGED)
 
 
-const int I(1);         //!< intensity of external current (default value )
-const double h(0.1); //!< time interval in ms
-const double SimulationStart(0);
-const double SimulationStop(95);
-const double tau(20); //!<  membrane time constant of an excitatory neurone in ms
-const double Vr(0.0); //!<  reset potential in mV
-const double tau_rp(20); //!< refractory period in ms
-const double threshold(20); //!<  threshold potential in mV
-const double R(20); //!<  resistance in GOhm
-
-const int WEIGHT_CONNECTION_RATIO(5); //!< inhibitory over excitatory;
-const double Je(0.1); //!< transmitted value of excitatory spike (weight)  // the EPSP amplitude in ms
-const double Ji(Je*WEIGHT_CONNECTION_RATIO);  //!< transmitted value of inhibitory spike (weight)
-
-const double D(1.5); //!<  the delay in ms
-
-const double C1(exp(-h/tau));
-const double C2(R*(1-C1));
-
-const int eta(2) ; //!<  external firing rate over rate to reach threshold
-const double V_ext(eta* threshold/(Je*tau)); //!< external firing rate
-const double V_ext_step (V_ext*h);
-
+const double Je(0.1); 				//!< transmitted value of excitatory spike (weight)  (UNCHANGED)
+const double C1(exp(-h/tau));		//!< (UNCHANGED)
+const double C2(R*(1-C1));			//!< (UNCHANGED)
 
 /// conversion in timesteps;
-const int STEP_SimulationStart=SimulationStart/h;
-const int STEP_SimulationStop=SimulationStop/h;
-const int STEP_tau=tau/h;
-const int STEP_tau_rp=tau_rp/h;
-const int STEP_D=D/h;
 
-const int Buffersize(STEP_D+1);
+const unsigned int STEP_END_SIMULATION(END_SIMULATION/h);
+const int STEP_tau=tau/h;			//!< tau in steps 					(UNCHANGED)
+const int STEP_tau_rp=tau_rp/h;		//!< refractory period in steps 	(UNCHANGED)
+const int STEP_D=D/h;				//!< delay in steps 				(UNCHANGED)
+const int Buffersize(STEP_D+1);		//!<  size of ring buffer 			(UNCHANGED)
 
-const string Path= "potentials.txt";
+//const int C_ext(Ce); //!< EXTERNAL_CONNECTIONS
 
 #endif
 
-/*
- * //assert Je et Ji < threshold
- *
- * const double mu_thr(threshold/ (Ce*Je*tau));
- * const double mu_ext(2*mu_thr); //firing rate for external neuron
- *
- * */
+

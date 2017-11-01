@@ -2,24 +2,25 @@
 #include <cmath>
 #include <gtest/gtest.h>
 #include "Neuron.hpp"
-#include "Excitatory.hpp"
-#include "Inhibitory.hpp"
+
 #include "Simulation.hpp"
  //{}
 //TEST () {}
 
 
 TEST(OneNeurone, OneUpdate) {
-    Excitatory neuron;
+    Neuron neuron(false);
     neuron.set_Iext(1.0);
+    neuron.setExternalNoise(false);
     neuron.update();
     EXPECT_EQ(1.0*20*(1-exp(-0.1/20)), neuron.getPotential());
  }
 
 
 TEST(OneNeurone, Nocurrent) {
-Excitatory neuron;
+Neuron neuron(false);
 neuron.set_Iext(0.0);
+neuron.setExternalNoise(false);
         neuron.update();
         neuron.update();
         neuron.update();
@@ -27,8 +28,9 @@ neuron.set_Iext(0.0);
         }
 
         TEST(OneNeurone, TwoUpdates) {
-        Excitatory neuron;
+        Neuron neuron(false);
         neuron.set_Iext(1.0);
+        neuron.setExternalNoise(false);
         neuron.update();
         neuron.update();
 
@@ -38,26 +40,26 @@ neuron.set_Iext(0.0);
         }
 
         TEST(SimulationwithTwoNeurones, numberOfNeurones){
-        Simulation sim;
+        Simulation sim(5,2,8);
         unsigned int a(8);
         EXPECT_EQ(a, sim.get_NbNeurones());
         }
 
         TEST(SimulationwithTwoNeurones, ConnectionToAnother) {
 
-        Simulation sim;
+        Simulation sim(5,2);
         sim.CreateConnection(0,1);
         EXPECT_TRUE(sim.Connected(0,1));
         }
 
         TEST(SimulationwithTwoNeurones, ConnectionToItself) {
-        Simulation sim;
+        Simulation sim(5,2);
         sim.CreateConnection(0,0);
         EXPECT_FALSE(sim.Connected(0,0));
         }
 
         TEST(OneNeurones, ResetPotential) {
-        Excitatory n1 (1.01);
+        Neuron n1 (false, 1.01);
 
         // time_spike le temps auquel le neurone 1 va spiker (chez moi a 923 pour ces parametres)
         for (int i(0); i < 923 +3; ++i) {
@@ -66,7 +68,8 @@ neuron.set_Iext(0.0);
         }} }
 
         TEST(OneNeuron, FirstSpikeTime) { // fonctionnel
-        Excitatory n(1.01);
+        Neuron n(false, 1.01);
+        n.setExternalNoise(false); 
         for (int i(0); i <= 922; ++i ) {
         n.update();}
         EXPECT_EQ(0, n.getSpikeNumber());
@@ -77,10 +80,11 @@ neuron.set_Iext(0.0);
 
 
         TEST(TwoNeurones, SpikeTransmission) {
-        Excitatory n1 (1.01);
-        Excitatory n2(0) ; //delay as defined in the cst file
+        Neuron n1 (false, 1.01);
+        Neuron n2(false, 0) ; //delay as defined in the cst file
         // time_spike le temps auquel le neurone 1 va spiker (chez moi a 923 pour ces parametres)
-
+		n1.setExternalNoise(false);
+		n2.setExternalNoise(false);
         for (int i(0); i < 923 +STEP_D +1; ++i) {
 
         if (n1.update()) {

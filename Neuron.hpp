@@ -11,41 +11,45 @@ using namespace std;
 
 //{}
 
-
-
 typedef vector<double> Buffer;
+
+
 
 class Neuron {
 
         private :
-
+		
+		bool isInhibitory_;								//!< true if the neurone is inhibitory, false if excitatory
         double I_ext_;                                  //!< external current
-        double potential_;                              //!< membrane potential
+        int Eta_;										//!<  external firing rate over rate to reach threshold
+		int weight_connection_ratio_;					//!< inhibitory over excitatory;
+	
+		double potential_;                              //!< membrane potential
         int spikeNumber_;                               //!< number of spike since simulation start
-        int timeSpike_;                                 //!< time of last spike
+        vector<double > timeSpike_;                                 //!< time of last spike
         int local_clock_;                               //!< neuron's local clock
-		bool external_noise_;
-
-
-        bool isRefractory(const int&) const; //!< State of neuron (refractory or not)
-        void storePotential (ofstream& out ) const;
-
-        protected :
-		Buffer buffer_; 	//!< saves inputs of spiking neuron of wich "this" is a target
+		bool external_noise_;							//!< true if we allowed the neuron to get random inputs from the rest of the brain 
+											
+		double V_ext_;								//!< external firing rate
+        bool isRefractory(const int&) const;		//!< State of neuron (refractory or not)
+       
+		Buffer buffer_; 							//!< saves inputs of spiking neuron of wich "this" is a target
 
         public :
 
-
-        Neuron(  double I_ext); //!< constructor
-        virtual ~Neuron();      //!<  destructor
-        double getPotential() const; //!<  gets the potential of the membrane
+        Neuron( bool Inhib,  double I_ext= 1.01, int Eta=ETA, int weight_connection_ratio = WEIGHT_CONNECTION_RATIO); //!< constructor
+        ~Neuron();      				//!<  destructor
+        vector <Neuron*> targets; 		//!< neurones that get an input in their buffer when the neurones spikes 
+        
+        double getPotential() const; 	//!<  gets the potential of the membrane
         int getSpikeNumber() const;     //!<  gets the number of spike since simulation start
-        int getTimeSpike() const;       //!<  gets time of last spike
-        virtual void writeinBuffer(const int& time ) =0  ; //!< neuron spiking at time (localclock ) sends a signal to every neuron it s connected to
-        void set_Iext(double) ; //!< setter of external current
-		vector <Neuron*> targets;
-        bool update () ; //!< updates the neuron of one step
-		void setExternalNoise(bool YesOrNo);
+        vector <double> getTimeSpike() const;       //!<  gets time of last spike
+        
+        bool update () ; 						//!< updates the neuron of one step
+        void writeinBuffer(const int& time )  ; //!< neuron spiking at time (localclock ) sends a signal to every neuron it s connected to
+        void set_Iext(double) ; 				//!< setter of external current
+		
+		void setExternalNoise(bool YesOrNo); //!< set to true if we allow the neuron to get random inputs from the rest of the brain 
 };
 
 

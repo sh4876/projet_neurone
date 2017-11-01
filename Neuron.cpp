@@ -2,31 +2,29 @@
 #include <iostream>
 #include <random>
 
+
+
 /**Constructor
- * @param external current wich has I(defined in the constants) as default value
+ * @param Nature of the neurone (inhibitoty or excitatory), external current, 
+ * external firing rate over rate to reach threshold, weight of inhibitory input over excitatory
+ * 
+ * external noise is set to true as default but can be change by a setter (usefull in unittests)
  * initialise all the cases of the buffer with the value of zero
  */
-Neuron::Neuron(double Iexterne ) : I_ext_(Iexterne)
+Neuron::Neuron(bool Inhib , double Iexterne , int Eta , int weight_connection_ratio) : isInhibitory_(Inhib ), Eta_(Eta) , I_ext_(Iexterne), 
+weight_connection_ratio_ (weight_connection_ratio)
 
-{       ///admit initialisation is in ms
+{      
 		potential_ = 0.0;
-        timeSpike_=0; // //permet de spiker des le temps zero (voir pour cela la fonction isRefractory)
+        //timeSpike_=0; 
         spikeNumber_= 0;
         local_clock_=0;
-		external_noise_=false;
+		external_noise_=true;
+		V_ext_ =Eta* threshold/(Je*tau)*h;
         for (size_t i(0); i < Buffersize; ++i) {buffer_.push_back(0.0);}
-
-
 }
+
 Neuron::~Neuron(){}
-
-
-/**storePotential
- * @param external stream
- * @see in update if spike occurs
- */
-void Neuron::storePotential (ofstream & out) const {
-        out << getTimeSpike()*h << " " << getPotential() << endl;}
 
 /**getPotential
  * @see in method storePotential and in unitests
@@ -46,7 +44,7 @@ int Neuron::getSpikeNumber() const {
  * @see in method storePotential, in method isRefractory
  * @return time of last spike
  */
-int Neuron::getTimeSpike() const {
+vector <double> Neuron::getTimeSpike() const {
         return timeSpike_;}
 
 
@@ -67,7 +65,7 @@ bool Neuron::update ( ) {
         if (external_noise_) {
             random_device rd;
             mt19937 randomList(rd());
-            poisson_distribution<> pois(V_ext_step);
+            poisson_distribution<> pois(V_ext_);
             noisyPotential = pois(randomList);
             }
 
@@ -81,9 +79,7 @@ bool Neuron::update ( ) {
             ++spikeNumber_;
             cout << "nombre de spike " << getSpikeNumber() << endl;
             cout << "heure locale " << local_clock_ << endl;
-            timeSpike_ = local_clock_;
-            ofstream PotentialStorageFile("potentials.txt");
-            storePotential(PotentialStorageFile);
+            timeSpike_.push_back(local_clock_/h);
             potential_ = Vr; //pot revient a sa valeur seuil
             return true;
             }
@@ -92,7 +88,21 @@ bool Neuron::update ( ) {
             cout << "Neurone refractaire " << endl; }
         ++local_clock_;
             return false;
-    }
+}
+
+/**writeinBuffer
+ * ADDS an current at a certain index in the ring buffer for it to be
+ * added to the potential latter in the simulation
+ * @param time at wich the neuron sending the input had a spike
+ * @see in update
+ */
+void Neuron::writeinBuffer(const int& time){
+        size_t index (0);
+        index = (time + buffer_.size()-1)%buffer_.size();
+        if (isInhibitory_) {buffer_[index] -= Je*WEIGHT_CONNECTION_RATIO;
+			} else {buffer_[index] += Je; }
+}
+
 
 /**isRefractory
  * if the delay since the last spike hasnt expired the neuron cant update its potential
@@ -102,12 +112,11 @@ bool Neuron::update ( ) {
  */
 bool Neuron::isRefractory(const int& time) const { // si le temps depuis le dernier spike est < au temps de pause refractaire
         if (getSpikeNumber() <= 0 )  {
-                return false;   }
-
-        else { //cout << "getTimeSpike(): " << getTimeSpike()  << endl;
-                return (getTimeSpike()+STEP_tau_rp > time);}
-
-        }
+			return false;   
+		}else { 
+			return (timeSpike_.back()+STEP_tau_rp > time);
+		}
+}
 
 /**set_Iext
  * @param external current
@@ -124,3 +133,5 @@ void Neuron::set_Iext(double Iext) {
 void Neuron::setExternalNoise(bool YesOrNo) {
      external_noise_= YesOrNo;
 }
+
+
