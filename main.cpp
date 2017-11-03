@@ -16,7 +16,7 @@ int main (){
     Simulation S1(5,2);
     S1.RunSimulation();
     S1.writeSpikeInFile("spikes.txt");
-
+	system ("python ../src/pyscript.py");
 
     return 0;
 }

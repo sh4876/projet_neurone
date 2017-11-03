@@ -5,13 +5,13 @@
 #include <cmath>
 using namespace std;
 
-const int NB_NEURONS(40); 			//!<  number of neurons 				(DEFAULT)
-const double END_SIMULATION(95); 	//!< End time of simulation in ms 		(DEFAULT)
+const int NB_NEURONS(12500); 			//!<  number of neurons 				(DEFAULT)
+const double END_SIMULATION(1000); 	//!< End time of simulation in ms 		(DEFAULT)
 
 const int WEIGHT_CONNECTION_RATIO(5);	//!< inhibitory over excitatory  	(DEFAULT)
 const int ETA(2) ; 						//!<  external firing rate over rate to reach threshold   (DEFAULT)
 
-const double NEURON_RATIO(0.25); 	//!<  Inhibitory over Excitatory 	(UNCHANGED)
+const double NEURON_RATIO(0.2); 	//!<  Inhibitory over Excitatory 	(UNCHANGED)
 const double CONNECTION_RATIO(0.1);	//!< connection ratio 				(UNCHANGED)
 
 /// values that can t be changed inside of the simulation :

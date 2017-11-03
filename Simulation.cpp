@@ -16,7 +16,7 @@ using namespace std;
 /**Constructor
  * @param total Number of neurone (NB_Neurones as default value)
  */
-Simulation::Simulation(int weight_connection_ratio, int Eta, unsigned int NbNeurons, int EndSimulation, double ExternalCurrent):
+Simulation::Simulation(unsigned int weight_connection_ratio, unsigned int Eta, unsigned int NbNeurons, unsigned int EndSimulation, double ExternalCurrent):
 	 weight_connection_ratio_(weight_connection_ratio), Eta_(Eta), NbNeurons_(NbNeurons), EndSimulation_(EndSimulation/h) , ExternalCurrent_(ExternalCurrent)
 {
 	NbExcitatory_ = NbNeurons_*(1-NEURON_RATIO);
@@ -38,6 +38,10 @@ Simulation::Simulation(int weight_connection_ratio, int Eta, unsigned int NbNeur
 void Simulation::RunSimulation() {
 		ConnectNetwork();
 		UpdateSimulation();
+		for (auto n : Neurone) {
+			cout << n->getNumTarget() << endl;
+		
+		}
 
 }
 
@@ -50,8 +54,10 @@ void Simulation::RunSimulation() {
  * @see RunSimulation
  */
 void Simulation::UpdateSimulation () {
+	int nbspikes (0);
+	
     if (!Neurone.empty()) {
-        int globalClock(0);
+        unsigned int globalClock(0);
         while (globalClock < EndSimulation_) {
 
             for( size_t i(0); i<Neurone.size(); ++i) {
@@ -59,18 +65,18 @@ void Simulation::UpdateSimulation () {
 
                 ///update du neurone dans tous les cas
                 else if (Neurone[i]->update() ) {
+					++nbspikes;
                     int atStepTime(Neurone[i]->getTimeSpike().back());
-                    for (auto target : Neurone[i]->targets) {
+                    for (auto& target : Neurone[i]->getTargets()) {
                         target-> writeinBuffer(atStepTime);
                     }
                 }
             }
         ++globalClock;
-        cout << "global_clock" << globalClock*h << endl;
         }
-
-    }
+    }      
 }
+
 
 /**CreateConnection
  * neuron of index2 becomes a target of neuron of index1
@@ -81,7 +87,9 @@ void Simulation::CreateConnection(const size_t& index1, const size_t& index2) {
     assert(index1<Neurone.size());
     assert(index2<Neurone.size());
     if (index1 != index2) {
-    (Neurone[index1]->targets).push_back(Neurone[index2]);}
+    Neurone[index1]->addTarget(Neurone[index2]);
+    
+    }
  }
 
 /**ConnectNetwork
@@ -89,21 +97,24 @@ void Simulation::CreateConnection(const size_t& index1, const size_t& index2) {
  * @see RunSimulation
  */
  void Simulation::ConnectNetwork() {
-         random_device rd;
-         mt19937 random_list (rd());
-         uniform_int_distribution<> excitatory(0, NbExcitatory_-1);
-         uniform_int_distribution<> inhibitory(NbExcitatory_, NbNeurons_-1);
+         default_random_engine sv;
+         mt19937 random_list (sv());
+         uniform_int_distribution<int> excitatory(0, NbExcitatory_-1);
+         uniform_int_distribution<int> inhibitory(NbExcitatory_, NbNeurons_-1);
          for (size_t target(0); target < NbNeurons_; ++target) {
 
-                 for (size_t i(0); i < Ce_; ++i) {
-                        auto source(excitatory(random_list));
-                        CreateConnection(source, target);
-                        }
+                for (size_t i(0); i < Ce_; ++i) {
+                       // auto source(excitatory(random_list));
+                        CreateConnection(excitatory(random_list),target);
+                        //cerr<<"DEBUG: creation connection" << i << " " << excitatory(random_list)<<endl;
+                        
+                 }
                 for (size_t i(0); i < Ci_; ++i) {
-                        auto source(inhibitory(random_list));
-                        CreateConnection(source, target);
-                        }
-        }void CreateConnection(const size_t& index1, const size_t& index2);
+                        //auto source(inhibitory(random_list));
+                        CreateConnection(inhibitory(random_list), target);
+                }
+        }
+        
 }
 
 
@@ -137,7 +148,9 @@ void Simulation::CreateInhibitory () {
  * @return if neuron of index2 is a target of neuron of index1
  */
 bool Simulation::Connected (const size_t& index1, const size_t& index2) const {
-    for (const auto& target : Neurone[index1]->targets ) {
+	assert(index1<Neurone.size());
+    assert(index2<Neurone.size());
+    for (const auto& target : Neurone[index1]->getTargets() ) {
         if (target == Neurone[index2]) {return true;}
     }
     return false;
@@ -160,14 +173,18 @@ double Simulation::getNeuronePotential (size_t index) const {
 
 //{}
 
-void Simulation::writeSpikeInFile( const  string& file) {
-	
+void Simulation::writeSpikeInFile( const string& file) {
 	ofstream out(file);
 	if (out.fail()) {
+
+
 		cerr << "impossible to write in file" << file << flush;
 	} else {
+		
 		for ( size_t i(0); i< Neurone.size(); ++i) {
-			for ( const auto& spike : Neurone[i]-> getTimeSpike()) {
+			assert((Neurone[i]-> getTimeSpike()).size() > 0 );
+			cout << (Neurone[i]-> getTimeSpike()).size() << endl; 
+			for ( const auto& spike : Neurone[i]->getTimeSpike()) {
 				out << spike*h << '\t' << i << '\n'; 
 			}
 		}

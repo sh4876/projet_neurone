@@ -2,7 +2,7 @@
 #include <iostream>
 #include <random>
 
-
+#include "Constants.hpp"
 
 /**Constructor
  * @param Nature of the neurone (inhibitoty or excitatory), external current, 
@@ -11,12 +11,11 @@
  * external noise is set to true as default but can be change by a setter (usefull in unittests)
  * initialise all the cases of the buffer with the value of zero
  */
-Neuron::Neuron(bool Inhib , double Iexterne , int Eta , int weight_connection_ratio) : isInhibitory_(Inhib ), Eta_(Eta) , I_ext_(Iexterne), 
-weight_connection_ratio_ (weight_connection_ratio)
+Neuron::Neuron(bool Inhib , double Iexterne , int Eta , int weight_connection_ratio) : isInhibitory_(Inhib ), I_ext_(Iexterne), Eta_(Eta) , 
+weight_connection_ratio_ (weight_connection_ratio) 
 
-{      
+{     
 		potential_ = 0.0;
-        //timeSpike_=0; 
         spikeNumber_= 0;
         local_clock_=0;
 		external_noise_=true;
@@ -59,37 +58,38 @@ vector <double> Neuron::getTimeSpike() const {
  * @return true if neuron had a spike
  */
 bool Neuron::update ( ) {
-        if (!isRefractory(local_clock_)) {
+       if (!isRefractory(local_clock_)) {
 
-        double noisyPotential(0);
-        if (external_noise_) {
-            random_device rd;
-            mt19937 randomList(rd());
-            poisson_distribution<> pois(V_ext_);
-            noisyPotential = pois(randomList);
-            }
+ 
+        potential_ = C1*potential_ + I_ext_*C2 + buffer_[(local_clock_)%(Buffersize)] + noise()  ; // m-a-j de la valeur du potentiel
 
-        cout << "local clock " << local_clock_<< endl;
-        potential_ = C1*potential_ + I_ext_*C2 + buffer_[(local_clock_)%(Buffersize)] + noisyPotential  ; // m-a-j de la valeur du potentiel
-
-        buffer_[(local_clock_)%(Buffersize)] = 0; //vide la case correspondante du buffer
-
-        cout << "potentiel " << potential_ <<endl;
         if (potential_ >= threshold) {
             ++spikeNumber_;
-            cout << "nombre de spike " << getSpikeNumber() << endl;
-            cout << "heure locale " << local_clock_ << endl;
+         
             timeSpike_.push_back(local_clock_/h);
             potential_ = Vr; //pot revient a sa valeur seuil
             return true;
             }
 
         } else {
-            cout << "Neurone refractaire " << endl; }
+          
+            }
+        buffer_[(local_clock_)%(Buffersize)] = 0; //vide la case correspondante du buffer
         ++local_clock_;
             return false;
 }
 
+double Neuron::noise () const {
+	double noisyPotential(0);
+       if (external_noise_) { 
+            static random_device rd;
+            static mt19937 generator(rd());
+            static poisson_distribution<int> pois(V_ext_);
+            noisyPotential = Je*pois(generator);
+            }
+    return noisyPotential; 
+	
+	}
 /**writeinBuffer
  * ADDS an current at a certain index in the ring buffer for it to be
  * added to the potential latter in the simulation
@@ -111,7 +111,7 @@ void Neuron::writeinBuffer(const int& time){
  * @return if neurone is indeed refractory
  */
 bool Neuron::isRefractory(const int& time) const { // si le temps depuis le dernier spike est < au temps de pause refractaire
-        if (getSpikeNumber() <= 0 )  {
+        if (getSpikeNumber() < 1 )  {
 			return false;   
 		}else { 
 			return (timeSpike_.back()+STEP_tau_rp > time);
@@ -134,4 +134,16 @@ void Neuron::setExternalNoise(bool YesOrNo) {
      external_noise_= YesOrNo;
 }
 
+void Neuron::addTarget (Neuron* n){
+	targets.push_back(n);
+}	
 
+size_t Neuron::getNumTarget () const {
+	
+	return targets.size();
+	}
+	
+vector<Neuron*> Neuron::getTargets() 
+{
+	return targets;
+}

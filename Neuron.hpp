@@ -6,6 +6,7 @@
 #include <cmath>
 #include <vector>
 #include "Constants.hpp"
+#include <random>
 
 using namespace std;
 
@@ -34,12 +35,14 @@ class Neuron {
         bool isRefractory(const int&) const;		//!< State of neuron (refractory or not)
        
 		Buffer buffer_; 							//!< saves inputs of spiking neuron of wich "this" is a target
-
+		vector <Neuron*> targets; 		//!< neurones that get an input in their buffer when the neurones spikes 
+		double noise () const ;
+	
         public :
 
-        Neuron( bool Inhib,  double I_ext= 1.01, int Eta=ETA, int weight_connection_ratio = WEIGHT_CONNECTION_RATIO); //!< constructor
+        Neuron( bool Inhib,  double I_ext= 0, int Eta=ETA, int weight_connection_ratio = WEIGHT_CONNECTION_RATIO); //!< constructor
         ~Neuron();      				//!<  destructor
-        vector <Neuron*> targets; 		//!< neurones that get an input in their buffer when the neurones spikes 
+        
         
         double getPotential() const; 	//!<  gets the potential of the membrane
         int getSpikeNumber() const;     //!<  gets the number of spike since simulation start
@@ -50,6 +53,9 @@ class Neuron {
         void set_Iext(double) ; 				//!< setter of external current
 		
 		void setExternalNoise(bool YesOrNo); //!< set to true if we allow the neuron to get random inputs from the rest of the brain 
+		void addTarget ( Neuron* n);
+		size_t getNumTarget () const ; 
+		vector<Neuron*> getTargets() ;
 };
 
 
