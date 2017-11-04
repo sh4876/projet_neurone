@@ -26,27 +26,30 @@ unsigned int NbInhibitory_;						//!< total number of inhibitory neurons
 unsigned int EndSimulation_; 					//!< time of simulation end in ms
 double ExternalCurrent_;						//!< external current given to the neurons in mA
 
-unsigned int Ce_;
-unsigned int Ci_;
+unsigned int Ce_;								//!< number of connections received from excitatory neurons (and for each neuron)
+unsigned int Ci_;								//!< number of connections received from inhibitory neurons (and for each neuron)
 
-vector<Neuron*> Neurone;                //!< saves all the neuron involved in the simulation
+vector<Neuron*> Neurone;                		//!< saves all the neuron involved in the simulation
 
-void CreateExcitatory () ;				//!< creates all excitatory neurons 
-void CreateInhibitory () ;				//!< creates all excitatory neurons
+void CreateExcitatory () ;						//!< creates all excitatory neurons 
+void CreateInhibitory () ;						//!< creates all excitatory neurons
 
 
         public :
 Simulation(unsigned int weight_connection_ratio, unsigned int Eta_, unsigned int NbNeurons = NB_NEURONS,  
 	unsigned int EndSimulation= END_SIMULATION, double ExternalCurrent=0.0 );          //!< constuctor
+	
+ ~Simulation();      							//!<  destructor
 void RunSimulation();                           //!< runs the simulation
 void UpdateSimulation ();       				//!< updates simulation from globalClock until Endsimulation is reached 
 void CreateConnection(const size_t& index1, const size_t& index2); //!< creates connections between two neurones
 void ConnectNetwork() ; 						//!< randomly connects the whole network
-bool Connected (const size_t& index1, const size_t& index2) const; //unecessary
-unsigned int get_NbNeurones () const ; 			//!< return number of neuron in the simulation
-double getNeuronePotential(size_t index) const; //utile pour les tests
-void writeSpikeInFile( const string& file);
-void shutExternalNoise(); 
-        };
+bool Connected (const size_t& index1, const size_t& index2) const; //!< attest if index2 is a target of index1 
+unsigned int get_NbNeurones () const ; 			//!< gets the number of neuron in the simulation
+double getNeuronePotential(size_t index) const; //!< gets the potential of a neuron
+void writeSpikeInFile( const string& file);		//!< writes the spike at wich the spikes occur in an external file 
+void shutExternalNoise(); 						//!< sets the backgroud noise off for each neuron 
+       
+};
 
 #endif

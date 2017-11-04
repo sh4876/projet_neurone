@@ -25,10 +25,19 @@ Simulation::Simulation(unsigned int weight_connection_ratio, unsigned int Eta, u
 	Ce_ = NbExcitatory_*CONNECTION_RATIO; //!< CONNECTIONS_FROM_EXCITATORY
 	Ci_ = NbInhibitory_*CONNECTION_RATIO; //!< CONNECTIONS_FROM_INHIBITORY
 	
+	//cout << "incommmm" << Ce_+Ci_ << endl; 
     CreateExcitatory();
     CreateInhibitory();
 }
 
+
+Simulation::~Simulation(){
+	 for (size_t i(0); i < Neurone.size() ; ++i ) {
+		delete Neurone[i];
+		Neurone[i]=nullptr;
+	 }
+	 Neurone.clear();
+}      
 
  /**RunSimulation
   * makes the connections between the neurones of the network
@@ -38,12 +47,30 @@ Simulation::Simulation(unsigned int weight_connection_ratio, unsigned int Eta, u
 void Simulation::RunSimulation() {
 		ConnectNetwork();
 		UpdateSimulation();
-		for (auto n : Neurone) {
-			cout << n->getNumTarget() << endl;
+		for (size_t i(0); i < Neurone.size() ; ++i ) {
+			//cout <<"number of connections for neuron " << i << " : " <<  (Neurone[i]->getTargets()).size() << endl;
+			}
+			
 		
+			unsigned int nbIncomingConnections(0);
+		
+		for (size_t i(0); i < Neurone.size() ; ++i ) {
+			if ( Connected(i,4))  { ++nbIncomingConnections;} 
 		}
 
+		cout << "test" << nbIncomingConnections << endl;
+			
+		int isatarget(0);
+		for (size_t i(0); i < Neurone.size() ; ++i ) {
+			for (const auto& target :   Neurone[i]->getTargets()) {
+			if (Neurone[4]== target) {++isatarget;} }
+		}
+		
+		cout << "nombre de fois target " << isatarget << endl; 
+		
+	 
 }
+
 
 /**UpdateSimulation
  * check if the table of neurone is not empty
@@ -86,10 +113,7 @@ void Simulation::UpdateSimulation () {
 void Simulation::CreateConnection(const size_t& index1, const size_t& index2) {
     assert(index1<Neurone.size());
     assert(index2<Neurone.size());
-    if (index1 != index2) {
     Neurone[index1]->addTarget(Neurone[index2]);
-    
-    }
  }
 
 /**ConnectNetwork
@@ -97,6 +121,7 @@ void Simulation::CreateConnection(const size_t& index1, const size_t& index2) {
  * @see RunSimulation
  */
  void Simulation::ConnectNetwork() {
+
          default_random_engine sv;
          mt19937 random_list (sv());
          uniform_int_distribution<int> excitatory(0, NbExcitatory_-1);
@@ -104,16 +129,14 @@ void Simulation::CreateConnection(const size_t& index1, const size_t& index2) {
          for (size_t target(0); target < NbNeurons_; ++target) {
 
                 for (size_t i(0); i < Ce_; ++i) {
-                       // auto source(excitatory(random_list));
-                        CreateConnection(excitatory(random_list),target);
-                        //cerr<<"DEBUG: creation connection" << i << " " << excitatory(random_list)<<endl;
-                        
+					CreateConnection(excitatory(random_list),target);
+                        //cerr<<"DEBUG: creation connection" << i << " " << excitatory(random_list)<<endl;   
                  }
                 for (size_t i(0); i < Ci_; ++i) {
-                        //auto source(inhibitory(random_list));
-                        CreateConnection(inhibitory(random_list), target);
+					CreateConnection(inhibitory(random_list), target);
                 }
         }
+      
         
 }
 
@@ -151,7 +174,7 @@ bool Simulation::Connected (const size_t& index1, const size_t& index2) const {
 	assert(index1<Neurone.size());
     assert(index2<Neurone.size());
     for (const auto& target : Neurone[index1]->getTargets() ) {
-        if (target == Neurone[index2]) {return true;}
+        if (Neurone[index2] == target) {return true;}
     }
     return false;
 }
@@ -161,7 +184,8 @@ bool Simulation::Connected (const size_t& index1, const size_t& index2) const {
  * @return number of neurones in the table
  */
 unsigned int Simulation::get_NbNeurones () const {
-    return Neurone.size();}
+    return Neurone.size();
+}
 
 /**getNeuronePotential
  * @param index of the neurone of which we want to know the potential
@@ -169,29 +193,34 @@ unsigned int Simulation::get_NbNeurones () const {
  * @return potential of given neuron
  */
 double Simulation::getNeuronePotential (size_t index) const {
-    return Neurone[index]->getPotential(); }
+    return Neurone[index]->getPotential(); 
+}
 
-//{}
-
+/**write the time (in ms) at wich each neuron had a spike in an external file
+ * @param the external file 
+ * @see in the main to plot the graphs 
+ */
 void Simulation::writeSpikeInFile( const string& file) {
 	ofstream out(file);
+	
 	if (out.fail()) {
-
-
 		cerr << "impossible to write in file" << file << flush;
+	
 	} else {
-		
 		for ( size_t i(0); i< Neurone.size(); ++i) {
 			assert((Neurone[i]-> getTimeSpike()).size() > 0 );
-			cout << (Neurone[i]-> getTimeSpike()).size() << endl; 
+			//cout << (Neurone[i]-> getTimeSpike()).size() << endl; 
 			for ( const auto& spike : Neurone[i]->getTimeSpike()) {
 				out << spike*h << '\t' << i << '\n'; 
-			}
+				}
 		}
 	}
 	out.close();
 }
 
+/**allows to silence the background noise the neuron additionally receive at each update
+ * @see used in unittests
+ */
 void Simulation::shutExternalNoise() {	
 	for ( auto& n : Neurone ) 
 		{n->setExternalNoise( false);
