@@ -46,10 +46,10 @@ void CreateConnection(const size_t& index1, const size_t& index2); //!< creates 
 void ConnectNetwork() ; 						//!< randomly connects the whole network
 bool Connected (const size_t& index1, const size_t& index2) const; //!< attest if index2 is a target of index1 
 unsigned int get_NbNeurones () const ; 			//!< gets the number of neuron in the simulation
-double getNeuronePotential(size_t index) const; //!< gets the potential of a neuron
+double getNeuronePotential(const size_t& index) const; //!< gets the potential of a neuron
 void writeSpikeInFile( const string& file);		//!< writes the spike at wich the spikes occur in an external file 
 void shutExternalNoise(); 						//!< sets the backgroud noise off for each neuron 
-       
+unsigned int IncomingConnections(const size_t& index) const ; //!< only used in unittests     
 };
 
 #endif

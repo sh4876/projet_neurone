@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <gtest/gtest.h>
+#include <cassert>
 #include "Neuron.hpp"
 
 #include "Simulation.hpp"
@@ -112,19 +113,16 @@ TEST(TwoNeurones, InhibitorySpikeTransmission) {
 	EXPECT_EQ(-Je*WEIGHT_CONNECTION_RATIO, n2.getPotential());
 }
 
-/*TEST(SimulationwithlotsofNeurons, numberOfIncomingConnections) {
+TEST(SimulationwithlotsofNeurons, numberOfIncomingConnections) {
     Simulation sim(5,2,12500);
     sim.ConnectNetwork();
-    unsigned int nbIncomingConnections(0);
-    for (size_t i(0); i < sim.get_NbNeurones() ; ++i ) {
-			if ( sim.Connected(i,1))  {
-				++nbIncomingConnections;} 
-	}
+
+    size_t indexChosen(5);
+    unsigned  int incommingC(sim.IncomingConnections(indexChosen));
+	
     unsigned int expectedIncomingConnections(CONNECTION_RATIO*sim.get_NbNeurones());
-    EXPECT_EQ(expectedIncomingConnections, nbIncomingConnections );
-}*/
-
-
+    EXPECT_EQ(expectedIncomingConnections, incommingC );
+}
 
 int main (int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);
